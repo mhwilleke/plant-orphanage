@@ -1,5 +1,6 @@
 <footer class="footer text-muted">
   <div class="container">
+    <p class="m-0 text-center">Open-source MIT Licensed. <a href="https://github.com/h-enk/hyas">GitHub v{{ $data := getJSON "package.json" }}{{ $data.version }}</a></p>
     <p class="m-0 text-center">{{ .Site.Params.footer | safeHTML }}</p>
   </div>
 </footer>
