@@ -11,3 +11,13 @@ import 'lazysizes';
 
 // global alert
 import './assets/js/alert';
+
+function prepare_adoption_form() {
+    console.log("Getting the form ready");
+}
+
+if(document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
+    prepare_adoption_form();
+else {
+    document.addEventListener('DOMContentLoaded', prepare_adoption_form, false);
+}
