@@ -28,6 +28,7 @@ async function prepare_adoption_form() {
         var clone = template.content.cloneNode(true);
         var link = clone.querySelector("#plant-name");
         link.textContent = orphan.plant_type;
+        link.href = orphan.Plant_info;
         placeholder.appendChild(clone);
     }
 }
