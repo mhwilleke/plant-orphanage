@@ -24,8 +24,10 @@ async function prepare_adoption_form() {
     console.log(plants);
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
-    var clone = template.content.cloneNode(true);
-    placeholder.appendChild(clone);
+    for (const orphan of plants) {
+        var clone = template.content.cloneNode(true);
+        placeholder.appendChild(clone);
+    }
 }
 
 if(document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
