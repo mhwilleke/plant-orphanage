@@ -30,10 +30,21 @@ async function prepare_adoption_form() {
         link.textContent = orphan.plant_type;
         link.href = orphan.Plant_info;
         var dropdown = clone.querySelector("#adopting-number");
-        var option = document.createElement("option"); 
-        option.textContent = orphan.inventory_remaining; 
-        option.value = orphan.inventory_remaining;
-        dropdown.appendChild(option);
+        if(orphan.inventory_remaining === 0){
+            var message = document.createElement("p");
+            message.textContent = "All out!";
+            message.style = "padding-left: 1em;";
+            dropdown.after(message);
+            dropdown.remove();
+        }else{
+            for(var i = 1; i <= orphan.inventory_remaining; ++i){
+            var option = document.createElement("option"); 
+            option.textContent = i; 
+            option.value = i;
+            dropdown.appendChild(option);
+            }
+        }
+        
         placeholder.appendChild(clone);
     }
 }
