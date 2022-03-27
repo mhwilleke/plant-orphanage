@@ -11,9 +11,17 @@ import 'lazysizes';
 
 // global alert
 import './assets/js/alert';
+import { createClient } from '@supabase/supabase-js'
+import { data } from 'autoprefixer';
 
-function prepare_adoption_form() {
-    console.log("Getting the form ready");
+// Create a single supabase client for interacting with your database 
+const supabase = createClient('https://lbnctgyadxhjbualvhbi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibmN0Z3lhZHhoamJ1YWx2aGJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDgzOTQyMjQsImV4cCI6MTk2Mzk3MDIyNH0.EXrx5wjh0w8_vBGUPfNR-PWpKU_MxjIqzR9Y2Miozsk')
+
+async function prepare_adoption_form() {
+    let { data: plants, error } = await supabase
+    .from('OrphanedPlants')
+    .select('plant_type');
+    console.log(plants);
 }
 
 if(document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
