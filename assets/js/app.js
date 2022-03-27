@@ -29,6 +29,11 @@ async function prepare_adoption_form() {
         var link = clone.querySelector("#plant-name");
         link.textContent = orphan.plant_type;
         link.href = orphan.Plant_info;
+        var dropdown = clone.querySelector("#adopting-number");
+        var option = document.createElement("option"); 
+        option.textContent = orphan.inventory_remaining; 
+        option.value = orphan.inventory_remaining;
+        dropdown.appendChild(option);
         placeholder.appendChild(clone);
     }
 }
