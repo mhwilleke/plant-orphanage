@@ -22,20 +22,25 @@
         They are growing in my greenhouse and will be available to you any time in April.<br>
         All seeds from Seedsaver Exchange and are organic (click on name for more plant info).
       </p>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"> <a target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a></label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
+      <div id="placeholder">
+
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<template id="orphaned-plant">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="plantid"><a target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a></label>
+    </div>
+    <select class="custom-select" id="plantid">
+      <option selected value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+</template>
 {{ end }}
 
 {{ define "section" }}

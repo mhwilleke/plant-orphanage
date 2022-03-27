@@ -22,6 +22,10 @@ async function prepare_adoption_form() {
     .from('OrphanedPlants')
     .select('plant_type,inventory_remaining,Plant_info');
     console.log(plants);
+    var placeholder = document.querySelector("#placeholder");
+    var template = document.querySelector('#orphaned-plant');
+    var clone = template.content.cloneNode(true);
+    placeholder.appendChild(clone);
 }
 
 if(document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
