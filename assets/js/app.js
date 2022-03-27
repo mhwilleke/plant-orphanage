@@ -26,6 +26,8 @@ async function prepare_adoption_form() {
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
         var clone = template.content.cloneNode(true);
+        var link = clone.querySelector("#plant-name");
+        link.textContent = orphan.plant_type;
         placeholder.appendChild(clone);
     }
 }
