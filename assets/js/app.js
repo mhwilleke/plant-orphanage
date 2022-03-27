@@ -20,7 +20,7 @@ const supabase = createClient('https://lbnctgyadxhjbualvhbi.supabase.co', 'eyJhb
 async function prepare_adoption_form() {
     let { data: plants, error } = await supabase
     .from('OrphanedPlants')
-    .select('plant_type');
+    .select('plant_type,inventory_remaining,Plant_info');
     console.log(plants);
 }
 
