@@ -17,6 +17,10 @@ import { data } from 'autoprefixer';
 // Create a single supabase client for interacting with your database 
 const supabase = createClient('https://lbnctgyadxhjbualvhbi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibmN0Z3lhZHhoamJ1YWx2aGJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDgzOTQyMjQsImV4cCI6MTk2Mzk3MDIyNH0.EXrx5wjh0w8_vBGUPfNR-PWpKU_MxjIqzR9Y2Miozsk')
 
+async function submit_adoption_form(e){
+    console.log("adopting plants");
+    e.preventDefault();
+}
 async function prepare_adoption_form() {
     let { data: plants, error } = await supabase
     .from('OrphanedPlants')
@@ -47,6 +51,8 @@ async function prepare_adoption_form() {
         
         placeholder.appendChild(clone);
     }
+    var button = document.querySelector("#adoption-form")
+    button.addEventListener('submit', submit_adoption_form, false);
 }
 
 if(document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
