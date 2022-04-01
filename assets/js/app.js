@@ -17,10 +17,19 @@ import { data } from 'autoprefixer';
 // Create a single supabase client for interacting with your database 
 const supabase = createClient('https://lbnctgyadxhjbualvhbi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibmN0Z3lhZHhoamJ1YWx2aGJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDgzOTQyMjQsImV4cCI6MTk2Mzk3MDIyNH0.EXrx5wjh0w8_vBGUPfNR-PWpKU_MxjIqzR9Y2Miozsk')
 
-async function submit_adoption_form(e){
+async function submit_adoption_form(e) {
     console.log("adopting plants");
     e.preventDefault();
+    let data = parseTheForm();
+    await sendToServer(data);
 }
+function parseTheForm() {
+    return "";
+}
+async function sendToServer(data) {
+    
+}
+
 async function prepare_adoption_form() {
     let { data: plants, error } = await supabase
     .from('OrphanedPlants')
@@ -34,18 +43,19 @@ async function prepare_adoption_form() {
         link.textContent = orphan.plant_type;
         link.href = orphan.Plant_info;
         var dropdown = clone.querySelector("#adopting-number");
-        if(orphan.inventory_remaining === 0){
+
+        if(orphan.inventory_remaining === 0) {
             var message = document.createElement("p");
             message.textContent = "All out!";
             message.style = "padding-left: 1em;";
             dropdown.after(message);
             dropdown.remove();
-        }else{
-            for(var i = 1; i <= orphan.inventory_remaining; ++i){
-            var option = document.createElement("option"); 
-            option.textContent = i; 
-            option.value = i;
-            dropdown.appendChild(option);
+        } else {
+            for(var i = 1; i <= orphan.inventory_remaining; ++i) {
+                var option = document.createElement("option"); 
+                option.textContent = i; 
+                option.value = i;
+                dropdown.appendChild(option);
             }
         }
         
