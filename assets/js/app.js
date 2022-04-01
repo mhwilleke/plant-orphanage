@@ -25,13 +25,16 @@ async function submit_adoption_form(e) {
 }
 function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
+    let data = {};
     for (const orphan of plantswanted) {
-        console.log ("asked for", orphan.value, orphan.dataset.plant);
+        if (orphan.value != 0) {
+            data[orphan.dataset.plant] = orphan.value;
+        }
     }
-    return "";
+    return data;
 }
 async function sendToServer(data) {
-    
+    console.log(data);
 }
 
 async function prepare_adoption_form() {
