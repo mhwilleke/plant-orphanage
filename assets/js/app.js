@@ -24,6 +24,10 @@ async function submit_adoption_form(e) {
     await sendToServer(data);
 }
 function parseTheForm() {
+    var plantswanted = document.querySelectorAll(".number-wanted");
+    for (const orphan of plantswanted) {
+        console.log ("asked for", orphan.value);
+    }
     return "";
 }
 async function sendToServer(data) {
@@ -34,7 +38,6 @@ async function prepare_adoption_form() {
     let { data: plants, error } = await supabase
     .from('OrphanedPlants')
     .select('plant_type,inventory_remaining,Plant_info');
-    console.log(plants);
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
