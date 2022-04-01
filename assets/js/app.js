@@ -28,13 +28,19 @@ function parseTheForm() {
     let data = {};
     for (const orphan of plantswanted) {
         if (orphan.value != 0) {
-            data[orphan.dataset.plant] = orphan.value;
+            data[orphan.dataset.plant] = parseInt(orphan.value);
         }
     }
     return data;
 }
 async function sendToServer(data) {
-    console.log(data);
+    console.log("sending adoption request", data);
+    const { data:response, error } = await supabase
+        .from('AdoptedPlants')
+        .insert([
+            { plant_type: 'someValue', inventory_requested: 9, requester: 'otherValue' },
+        ])
+    console.log(response, error);
 }
 
 async function prepare_adoption_form() {
