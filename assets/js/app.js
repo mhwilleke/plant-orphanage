@@ -26,7 +26,7 @@ async function submit_adoption_form(e) {
 function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
     for (const orphan of plantswanted) {
-        console.log ("asked for", orphan.value);
+        console.log ("asked for", orphan.value, orphan.dataset.plant);
     }
     return "";
 }
@@ -60,6 +60,7 @@ async function prepare_adoption_form() {
                 option.value = i;
                 dropdown.appendChild(option);
             }
+            dropdown.dataset.plant = orphan.plant_type;
         }
         
         placeholder.appendChild(clone);
