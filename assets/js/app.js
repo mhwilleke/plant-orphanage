@@ -27,11 +27,11 @@ function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
     let data = {
         adopter:{},
-        plants:{}
+        plants:[]
     };
     for (const orphan of plantswanted) {
         if (orphan.value != 0) {
-            data.plants[orphan.dataset.plant] = parseInt(orphan.value);
+            data.plants.push({plant:orphan.dataset.plant, number:parseInt(orphan.value)});
         }
     }
     var adopter = document.querySelector("#adopter");
@@ -44,12 +44,22 @@ function parseTheForm() {
 }
 async function sendToServer(data) {
     console.log("sending adoption request", data);
+    await createAdopter(data.adopter);
+    for (const orphan of data.plants){
+        await adoptPlant(orphan, data.adopter);
+    }
     // const { data:response, error } = await supabase
     //     .from('AdoptedPlants')
     //     .insert([
     //         { plant_type: 'someValue', inventory_requested: 9, requester: 'otherValue' },
     //     ])
     // console.log(response, error);
+}
+async function createAdopter(person) {
+    console.log("creating adopter", person);
+}
+async function adoptPlant(plant, person) {
+    console.log(person, "is adopting", plant)
 }
 
 async function prepare_adoption_form() {
