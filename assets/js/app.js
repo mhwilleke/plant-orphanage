@@ -53,7 +53,7 @@ async function sendToServer(data) {
 function thankyou(plants){
     var adoption_form = document.querySelector("#adoption-form");
     const message = document.createElement("p");
-    message.textContent = "Your request has been recorded! Marian will be in contact with you soon."; 
+    message.textContent = "Your request has been recorded! Marian (marianhhartman@gmail.com) will be in contact with you soon."; 
     adoption_form.parentElement.append(message);
     adoption_form.remove();
 }
