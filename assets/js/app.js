@@ -35,7 +35,9 @@ function parseTheForm() {
         }
     }
     var adopter = document.querySelector("#adopter");
-    data.adopter.name = adopter.value
+    data.adopter.name = adopter.value;
+    var adopter_email = document.querySelector("#adopter-email");
+    data.adopter.email = adopter_email.value;
     return data;
 }
 async function sendToServer(data) {
