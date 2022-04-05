@@ -48,12 +48,6 @@ async function sendToServer(data) {
     for (const orphan of data.plants){
         await adoptPlant(orphan, data.adopter);
     }
-    // const { data:response, error } = await supabase
-    //     .from('AdoptedPlants')
-    //     .insert([
-    //         { plant_type: 'someValue', inventory_requested: 9, requester: 'otherValue' },
-    //     ])
-    // console.log(response, error);
 }
 async function createAdopter(person) {
     console.log("creating adopter", person);
@@ -65,7 +59,13 @@ async function createAdopter(person) {
     console.log(response, error);
 }
 async function adoptPlant(plant, person) {
-    console.log(person, "is adopting", plant)
+    console.log(person, "is adopting", plant);
+    const { data:response, error } = await supabase
+        .from('AdoptedPlants')
+        .insert([
+            { plant_type: plant.plant, inventory_requested: plant.number, requester: person.email },
+        ])
+    console.log(response, error);
 }
 
 async function prepare_adoption_form() {
