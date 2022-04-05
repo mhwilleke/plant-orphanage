@@ -38,6 +38,8 @@ function parseTheForm() {
     data.adopter.name = adopter.value;
     var adopter_email = document.querySelector("#adopter-email");
     data.adopter.email = adopter_email.value;
+    var address = document.querySelector("#address");
+    data.adopter.address = address.value;
     return data;
 }
 async function sendToServer(data) {
