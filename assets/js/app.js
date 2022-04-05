@@ -48,6 +48,14 @@ async function sendToServer(data) {
     for (const orphan of data.plants){
         await adoptPlant(orphan, data.adopter);
     }
+    thankyou(data.plants);
+}
+function thankyou(plants){
+    var adoption_form = document.querySelector("#adoption-form");
+    const message = document.createElement("p");
+    message.textContent = "Your request has been recorded! Marian will be in contact with you soon."; 
+    adoption_form.parentElement.append(message);
+    adoption_form.remove();
 }
 async function createAdopter(person) {
     console.log("creating adopter", person);
