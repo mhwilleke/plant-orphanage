@@ -34,6 +34,8 @@ function parseTheForm() {
             data.plants[orphan.dataset.plant] = parseInt(orphan.value);
         }
     }
+    var adopter = document.querySelector("#adopter");
+    data.adopter.name = adopter.value
     return data;
 }
 async function sendToServer(data) {
