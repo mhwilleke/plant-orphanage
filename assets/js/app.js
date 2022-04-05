@@ -57,6 +57,12 @@ async function sendToServer(data) {
 }
 async function createAdopter(person) {
     console.log("creating adopter", person);
+    const { data:response, error } = await supabase
+        .from('Adopters')
+        .insert([
+            { email: person.email, name: person.name, address: person.address },
+        ])
+    console.log(response, error);
 }
 async function adoptPlant(plant, person) {
     console.log(person, "is adopting", plant)
