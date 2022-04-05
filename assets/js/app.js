@@ -25,22 +25,25 @@ async function submit_adoption_form(e) {
 }
 function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
-    let data = {};
+    let data = {
+        adopter:{},
+        plants:{}
+    };
     for (const orphan of plantswanted) {
         if (orphan.value != 0) {
-            data[orphan.dataset.plant] = parseInt(orphan.value);
+            data.plants[orphan.dataset.plant] = parseInt(orphan.value);
         }
     }
     return data;
 }
 async function sendToServer(data) {
     console.log("sending adoption request", data);
-    const { data:response, error } = await supabase
-        .from('AdoptedPlants')
-        .insert([
-            { plant_type: 'someValue', inventory_requested: 9, requester: 'otherValue' },
-        ])
-    console.log(response, error);
+    // const { data:response, error } = await supabase
+    //     .from('AdoptedPlants')
+    //     .insert([
+    //         { plant_type: 'someValue', inventory_requested: 9, requester: 'otherValue' },
+    //     ])
+    // console.log(response, error);
 }
 
 async function prepare_adoption_form() {
