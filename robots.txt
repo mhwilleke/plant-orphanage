@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hyas.netlify.app/sitemap.xml
+Sitemap: https://mhwilleke.github.io/plant-orphanage/sitemap.xml
