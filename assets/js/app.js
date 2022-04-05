@@ -55,19 +55,24 @@ async function createAdopter(person) {
         .from('Adopters')
         .insert([
             { email: person.email, name: person.name, address: person.address },
-        ])
+        ]);
     console.log(response, error);
 }
 async function adoptPlant(plant, person) {
     console.log(person, "is adopting", plant);
-    const { data:response, error } = await supabase
+    let { data:response, error } = await supabase
         .from('AdoptedPlants')
         .insert([
             { plant_type: plant.plant, inventory_requested: plant.number, requester: person.email },
-        ])
+        ]);
+    console.log(response, error);
+    ({ data:response, error } = await supabase
+        .rpc('reduce-inventory', {
+            number_adopted:plant.number, 
+            plant:plant.plant
+          }));
     console.log(response, error);
 }
-
 async function prepare_adoption_form() {
     let { data: plants, error } = await supabase
     .from('OrphanedPlants')
