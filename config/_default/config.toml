@@ -1,4 +1,4 @@
-baseurl = "https://hyas.netlify.app/"
+baseurl = "https://mhwilleke.github.io/plant-orphanage/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true

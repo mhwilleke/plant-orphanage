@@ -1,15 +1,15 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Hyas"
+title = "Plant Orphanage"
 titleSeparator = "-"
-titleAddition = "Modern Hugo Starter"
-description = "Hyas is a Hugo starter helping you build modern websites that are secure, fast, and SEO-ready — by default."
+titleAddition = "Adopt My Plants!"
+description = ""
 
 ## Open Graph
 images = ["hyas.png"]
 ogLocale = "en_US"
-titleHome = "Hyas Hugo Starter"
+titleHome = "Plant Orphanage"
 
 ## Twitter Cards
 twitterSite = "@gethyas"
