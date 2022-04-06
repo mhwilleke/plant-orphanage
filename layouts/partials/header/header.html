@@ -4,7 +4,7 @@
 
 <header class="navbar navbar-light">
   <div class="container">
-    <a class="navbar-brand monospace" href="{{ .Site.BaseURL | absURL }}">{{ .Site.Params.Title }}</a>
+    <a class="navbar-brand monospace" href="{{ .Site.BaseURL }}">{{ .Site.Params.Title }}</a>
     <div class="ms-auto">
     {{ range .Site.Menus.main }}
       <span class="navbar-text">
