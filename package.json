@@ -44,7 +44,7 @@
     "@babel/preset-env": "^7.16",
     "@fullhuman/postcss-purgecss": "^4.1",
     "@popperjs/core": "^2.11",
-    "@supabase/supabase-js": "^1.32.2",
+    "@supabase/supabase-js": "^2.0.4",
     "auto-changelog": "^2.4",
     "autoprefixer": "^10.4",
     "bootstrap": "^5.1",
