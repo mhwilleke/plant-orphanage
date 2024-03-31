@@ -83,7 +83,7 @@ async function adoptPlant(plant, person) {
 async function prepare_adoption_form() {
     let { data: plants } = await supabase
         .from('OrphanedPlants')
-        .select('plant_type,inventory_remaining,Plant_info,availability').order("plant_type");
+        .select('plant_type,inventory_remaining,Plant_info,notes').order("plant_type");
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
@@ -91,11 +91,11 @@ async function prepare_adoption_form() {
         var link = clone.querySelector("#plant-name");
         link.textContent = orphan.plant_type;
         link.href = orphan.Plant_info;
-        var availability = clone.querySelector("#availability-placeholder")
+        var notes = clone.querySelector("#notes-placeholder")
         if (orphan.inventory_remaining === 0) {
-            availability.remove();
+            notes.remove();
         }
-        availability.textContent = "| available " + orphan.availability
+        notes.textContent = orphan.notes
 
         var dropdown = clone.querySelector("#adopting-number");
 

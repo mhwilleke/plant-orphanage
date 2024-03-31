@@ -3,6 +3,7 @@
   <div class="col-lg-7 pb-5 text-center">
     <h1>{{ .Title }}</h1>
     <p>{{ .Params.Lead | safeHTML }}</p>
+    <figure><img style="width:100%; max-width: 400px; object-fit: contain;" src="https://lh3.googleusercontent.com/pw/AP1GczPfeAv0iqk4YY3XJdpgH4mEqN3O_D-vAWSENd_3QFwVWJoF6N1hVZGenwSHhAOVaZJIGTXNu1zhp1dNsCjkJlPnEcf2rrjOTBrQgljdOOGTz8Ymfh-sz45tzLUp8S7SQKA9M0HAQom6d9s8VHtm0GW0uA=w2002-h1502-s-no-gm"></figure>
   </div>
     <form id="adoption-form">
       <div class="form-group">
@@ -18,30 +19,30 @@
         <input type="text" class="form-control" id="address" placeholder="Street Address">
       </div>
       <p>
-        The greenhouse has been nurturing hundreds of seeds, now grown into lovely small plants. This year I've added flowers to the mix! Although I must admit to keeping my painted daisies, lupines, and butterfly weed, there are so many available and ready to add their beauty in your space :)
+        It's the third year of greenhouse delights! I am constantly amazed just how many plants can thrive in this 10x8 space. It is with immense pleasure to nurture all of these lovelies, and to know that so many will be shared across our community. All seeds are organic from our very own Sow True Seeds as well as Floret Flowers in Washington state. Floret Farms is an organic and sustainable family farm who breeds their own seeds. Nothing is outsourced! For details on the plant and how to grow it, please click on the link.
       </p><p>
-        Please select the number of plants you want to adopt. The inventory will update after each request has been submitted. 
+        The inventory will update after each request has been submitted, so PLEASE be sure to click submit after you've made your selections. You will receive a confirmation within 24 hours, so if you don't receive one, please contact me at marianhhartman@gmail.com.
       </p><p> 
-        Plants will be maintained in the greenhouse during April, and then potted for pick-up during my Plants & Wine party on April 29. <a href="https://forms.gle/UMi8HhBNgGhPApxXA">Please RSVP!</a>
+        The plants will continue to grow in the greenhouse throughout April. Pick-up is intended to be during the Plant Garden Party on April 27. <a href="https://forms.gle/wEpbnsmmi6raNYZMA">Please RSVP to help me plan well.</a>
       </p>
-      <p>All seeds are organic from Seedsaver Exchange, Southern Exposure, Sow True Seeds, and Floret Flowers; click on the plant link to know it's seed source.</p>
       <p>
       </p>
       <div id="placeholder">
 
       </div>
-      <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+      <button id="submit" type="submit" class="btn btn-primary" style="margin-top:2.5em;">Submit</button>
     </form>
 </div>
 <template id="orphaned-plant">
-  <div class="input-group mb-3">
+  <div class="input-group mb-3" style="margin-top:2.5em;">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="adopting-number"><a id="plant-name" target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a><span id="availability-placeholder" style="margin-left:.5em;"></span></label>
+      <label class="input-group-text" for="adopting-number"><a id="plant-name" target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a></label>
     </div>
     <select class="custom-select number-wanted" id="adopting-number">
       <option selected value="0">0</option>
     </select>
   </div>
+  <p id="notes-placeholder" style="margin:-0.5em 0 0;"></p>
 </template>
 {{ end }}
 
