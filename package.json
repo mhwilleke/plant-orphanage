@@ -1,11 +1,11 @@
 {
-  "name": "@hyas/core",
-  "description": "Hyas core",
-  "version": "1.5.6",
+  "name": "plant-orphanage",
+  "description": "Plant Orphanage",
+  "version": "1.5.0",
   "browserslist": [
     "defaults"
   ],
-  "repository": "https://github.com/h-enk/hyas",
+  "repository": "https://github.com/mhwilleke/plant-orphanage/",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -39,28 +39,28 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17",
-    "@babel/core": "^7.17",
-    "@babel/preset-env": "^7.16",
-    "@fullhuman/postcss-purgecss": "^4.1",
+    "@babel/cli": "^7.26",
+    "@babel/core": "^7.26",
+    "@babel/preset-env": "^7.26",
+    "@fullhuman/postcss-purgecss": "^7.0",
     "@popperjs/core": "^2.11",
-    "@supabase/supabase-js": "^1.32.2",
-    "auto-changelog": "^2.4",
+    "@supabase/supabase-js": "^2.49.1",
+    "auto-changelog": "^2.5",
     "autoprefixer": "^10.4",
-    "bootstrap": "^5.1",
-    "eslint": "^8.11",
+    "bootstrap": "^5.3",
+    "eslint": "^9.23",
     "exec-bin": "^1.0.0",
-    "hugo-installer": "^3.1",
+    "hugo-installer": "^4.0",
     "lazysizes": "^5.3",
-    "markdownlint-cli2": "^0.4.0",
-    "netlify-plugin-submit-sitemap": "^0.3.0",
-    "postcss": "^8.4",
-    "postcss-cli": "^9.1",
+    "markdownlint-cli2": "^0.17.2",
+    "netlify-plugin-submit-sitemap": "^0.4.0",
+    "postcss": "^8.5",
+    "postcss-cli": "^11.0",
     "purgecss-whitelister": "^2.4",
-    "quicklink": "^2.2.0",
-    "shx": "^0.3",
-    "stylelint": "^14.6",
-    "stylelint-config-standard-scss": "^3.0"
+    "quicklink": "^2.3.0",
+    "shx": "^0.4",
+    "stylelint": "^16.16",
+    "stylelint-config-standard-scss": "^14.0"
   },
   "otherDependencies": {
     "hugo": "0.95.0"
