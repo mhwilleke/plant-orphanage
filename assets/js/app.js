@@ -97,6 +97,9 @@ async function prepare_adoption_form() {
         let oldtotal = adoption_totals.get(instance.OrphanedId) || 0;
         adoption_totals[instance.OrphanedId] = oldtotal + instance.inventory_requested;
     }
+    for (const instance of plants) {
+      instance.inventory_remaining  =  instance.inventory_available - (adoption_totals.get(instance.id) || 0);
+    }
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
