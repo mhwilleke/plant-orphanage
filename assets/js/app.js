@@ -14,7 +14,10 @@ import './assets/js/alert';
 import { createClient } from '@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database 
-const supabase = createClient('https://pcfigrjubeiztwprkcso.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw')
+const supabase = createClient(
+  "https://pcfigrjubeiztwprkcso.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
+);
 
 async function submit_adoption_form(e) {
     console.log("adopting plants");
@@ -52,7 +55,7 @@ async function sendToServer(data) {
 function thankyou() {
     var adoption_form = document.querySelector("#adoption-form");
     const message = document.createElement("p");
-    message.textContent = "Your request has been recorded! Marian (marianhhartman@gmail.com) will be in contact with you soon.";
+    message.textContent = "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt.";
     adoption_form.parentElement.append(message);
     adoption_form.remove();
 }
