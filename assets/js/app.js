@@ -92,6 +92,11 @@ async function prepare_adoption_form() {
         .select('OrphanedId,inventory_requested');
     let { data: plants } = await orphansQuery;
     let { data: adoptions } = await adoptionsQuery;
+    const adoption_totals = new Map();
+    for (const instance of adoptions) {
+        let oldtotal = adoption_totals.get(instance.OrphanedId) || 0;
+        adoption_totals[instance.OrphanedId] = oldtotal + instance.inventory_requested;
+    }
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
