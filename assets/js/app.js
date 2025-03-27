@@ -89,13 +89,13 @@ async function prepare_adoption_form() {
         .select('plant_type,inventory_available,Plant_info, id').order("plant_type");
     const adoptionsQuery = supabase
         .from('AdoptedPlants')
-        .select('OrphanedId,inventory_requested');
+        .select('Orphaned_ID,inventory_requested');
     let { data: plants } = await orphansQuery;
     let { data: adoptions } = await adoptionsQuery;
     const adoption_totals = new Map();
     for (const instance of adoptions) {
-        let oldtotal = adoption_totals.get(instance.OrphanedId) || 0;
-        adoption_totals[instance.OrphanedId] = oldtotal + instance.inventory_requested;
+        let oldtotal = adoption_totals.get(instance.Orphaned_ID) || 0;
+        adoption_totals[instance.Orphaned_ID] = oldtotal + instance.inventory_requested;
     }
     for (const instance of plants) {
       instance.inventory_remaining  =  instance.inventory_available - (adoption_totals.get(instance.id) || 0);
