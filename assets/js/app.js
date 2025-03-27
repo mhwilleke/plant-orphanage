@@ -14,7 +14,7 @@ import './assets/js/alert';
 import { createClient } from '@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database 
-const supabase = createClient('https://lbnctgyadxhjbualvhbi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibmN0Z3lhZHhoamJ1YWx2aGJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDgzOTQyMjQsImV4cCI6MTk2Mzk3MDIyNH0.EXrx5wjh0w8_vBGUPfNR-PWpKU_MxjIqzR9Y2Miozsk')
+const supabase = createClient('https://pcfigrjubeiztwprkcso.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw')
 
 async function submit_adoption_form(e) {
     console.log("adopting plants");
@@ -81,9 +81,14 @@ async function adoptPlant(plant, person) {
     console.log(response, error);
 }
 async function prepare_adoption_form() {
-    let { data: plants } = await supabase
+    const orphansQuery = supabase
         .from('OrphanedPlants')
-        .select('plant_type,inventory_remaining,Plant_info,notes').order("plant_type");
+        .select('plant_type,inventory_available,Plant_info, id').order("plant_type");
+    const adoptionsQuery = supabase
+        .from('AdoptedPlants')
+        .select('OrphanedId,inventory_requested');
+    let { data: plants } = await orphansQuery;
+    let { data: adoptions } = await adoptionsQuery;
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     for (const orphan of plants) {
