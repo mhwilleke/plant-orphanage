@@ -111,7 +111,7 @@ async function prepare_adoption_form() {
         if (orphan.inventory_remaining === 0) {
             notes.remove();
         }
-        notes.textContent = orphan.notes
+        notes.textContent = `Starting Inventory: ${orphan.inventory_available}`;
 
         var dropdown = clone.querySelector("#adopting-number");
 
