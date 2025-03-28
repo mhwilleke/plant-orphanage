@@ -39,12 +39,12 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@babel/cli": "^7.26",
+    "@babel/cli": "^7.27",
     "@babel/core": "^7.26",
     "@babel/preset-env": "^7.26",
     "@fullhuman/postcss-purgecss": "^7.0",
     "@popperjs/core": "^2.11",
-    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/supabase-js": "^2.49.3",
     "auto-changelog": "^2.5",
     "autoprefixer": "^10.4",
     "bootstrap": "^5.3",
@@ -59,7 +59,7 @@
     "purgecss-whitelister": "^2.4",
     "quicklink": "^2.3.0",
     "shx": "^0.4",
-    "stylelint": "^16.16",
+    "stylelint": "^16.17",
     "stylelint-config-standard-scss": "^14.0"
   },
   "otherDependencies": {
