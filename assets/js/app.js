@@ -47,7 +47,11 @@ function parseTheForm() {
     };
     for (const orphan of plantswanted) {
         if (orphan.value != 0) {
-            data.plants.push({ plant: orphan.dataset.plant, number: parseInt(orphan.value) });
+            data.plants.push({
+              plant: orphan.dataset.plant,
+              plant_id: orphan.dataset.plant_id,
+              number: parseInt(orphan.value),
+            });
         }
     }
     var adopter = document.querySelector("#adopter");
@@ -60,9 +64,12 @@ function parseTheForm() {
 }
 async function sendToServer(data) {
     console.log("sending adoption request", data);
+    const { plants } = await fetchPlantInfo();
+    console.log("Plants remaining on server:", plants);
     await createAdopter(data.adopter);
     for (const orphan of data.plants) {
-        await adoptPlant(orphan, data.adopter);
+        const number_remaining = plants.find(p=>p.plant_type === orphan.plant).inventory_remaining;
+        await adoptPlant(orphan, data.adopter, number_remaining);
     }
     thankyou();
 }
@@ -82,14 +89,16 @@ async function createAdopter(person) {
         ]);
     console.log(response, error);
 }
-async function adoptPlant(plant, person) {
-    console.log(person, "is adopting", plant);
+async function adoptPlant(plant, person, number_remaining) {
+    console.log(person, "is adopting", plant, "from a remaining", number_remaining);
+    const number_to_adopt = Math.min(number_remaining, plant.number);
     let { data: response, error } = await supabase
         .from('AdoptedPlants')
         .insert([
-            { plant_type: plant.plant, inventory_requested: plant.number, requester: person.email },
+            { Orphaned_ID: plant.plant_id, plant_type: plant.plant, inventory_requested: number_to_adopt, requester: person.email },
         ]);
     console.log(response, error);
+    return {plant: plant.plant, requested: plant.number, got: number_to_adopt}
 }
 async function fetchPlantInfo() {
   const adoptionsQuery = supabase
@@ -154,6 +163,7 @@ async function prepare_adoption_form() {
                     dropdown.appendChild(option);
                 }
                 dropdown.dataset.plant = orphan.plant_type;
+                dropdown.dataset.plant_id = orphan.id;
             }
 
             placeholder.appendChild(clone);
