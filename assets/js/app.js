@@ -22,13 +22,22 @@ const supabase = createClient(
 let alreadysent = false;
 
 async function submit_adoption_form(e) {
-    console.log("adopting plants");
-    e.preventDefault();
-    let data = parseTheForm();
-    if(!alreadysent){
-        alreadysent = true;
-        await sendToServer(data);
-    }
+  console.log("adopting plants");
+  e.preventDefault();
+  let data = parseTheForm();
+  if (!data.adopter.email) {
+    highlightMissingEmailField();
+    return;
+  }
+  if (!alreadysent) {
+    alreadysent = true;
+    await sendToServer(data);
+  }
+}
+function highlightMissingEmailField() {
+    var adopter_email = document.querySelector("#email-group");
+    adopter_email.classList.add("missing");
+    adopter_email.scrollIntoView({behavior:"instant",block: "start", inline: "nearest"})
 }
 function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
