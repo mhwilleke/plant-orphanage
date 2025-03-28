@@ -19,11 +19,16 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
 );
 
+let alreadysent = false;
+
 async function submit_adoption_form(e) {
     console.log("adopting plants");
     e.preventDefault();
     let data = parseTheForm();
-    await sendToServer(data);
+    if(!alreadysent){
+        alreadysent = true;
+        await sendToServer(data);
+    }
 }
 function parseTheForm() {
     var plantswanted = document.querySelectorAll(".number-wanted");
