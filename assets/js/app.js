@@ -91,28 +91,35 @@ async function adoptPlant(plant, person) {
         ]);
     console.log(response, error);
 }
+async function fetchPlantInfo() {
+  const orphansQuery = supabase
+    .from("OrphanedPlants")
+    .select("plant_type,inventory_available,Plant_info, id,plant_catagory")
+    .order("plant_type");
+  const adoptionsQuery = supabase
+    .from("AdoptedPlants")
+    .select("Orphaned_ID,inventory_requested");
+  let { data: plants } = await orphansQuery;
+  let { data: adoptions } = await adoptionsQuery;
+  const adoption_totals = new Map();
+  for (const instance of adoptions) {
+    let oldtotal = adoption_totals.get(instance.Orphaned_ID) || 0;
+    adoption_totals[instance.Orphaned_ID] =
+      oldtotal + instance.inventory_requested;
+  }
+  const plant_categories = new Map();
+  for (const instance of plants) {
+    if (!plant_categories.has(instance.plant_catagory)) {
+      plant_categories.set(instance.plant_catagory, []);
+    }
+    plant_categories.get(instance.plant_catagory).push(instance);
+    instance.inventory_remaining =
+      instance.inventory_available - (adoption_totals.get(instance.id) || 0);
+  }
+  return {plant_categories, plants};
+}
 async function prepare_adoption_form() {
-    const orphansQuery = supabase
-        .from('OrphanedPlants')
-        .select('plant_type,inventory_available,Plant_info, id,plant_catagory').order("plant_type");
-    const adoptionsQuery = supabase
-        .from('AdoptedPlants')
-        .select('Orphaned_ID,inventory_requested');
-    let { data: plants } = await orphansQuery;
-    let { data: adoptions } = await adoptionsQuery;
-    const adoption_totals = new Map();
-    for (const instance of adoptions) {
-        let oldtotal = adoption_totals.get(instance.Orphaned_ID) || 0;
-        adoption_totals[instance.Orphaned_ID] = oldtotal + instance.inventory_requested;
-    }
-    const plant_categories = new Map();
-    for (const instance of plants) {
-        if(!plant_categories.has(instance.plant_catagory)) {
-            plant_categories.set(instance.plant_catagory, []);
-        }
-        plant_categories.get(instance.plant_catagory).push(instance);
-      instance.inventory_remaining  =  instance.inventory_available - (adoption_totals.get(instance.id) || 0);
-    }
+    const {plant_categories} = await fetchPlantInfo();
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
     console.log(plant_categories);
