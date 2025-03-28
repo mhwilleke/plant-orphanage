@@ -112,8 +112,8 @@ async function fetchPlantInfo() {
   const adoption_totals = new Map();
   for (const instance of adoptions) {
     let oldtotal = adoption_totals.get(instance.Orphaned_ID) || 0;
-    adoption_totals[instance.Orphaned_ID] =
-      oldtotal + instance.inventory_requested;
+    adoption_totals.set(instance.Orphaned_ID,
+      oldtotal + instance.inventory_requested);
   }
   let { data: plants } = await orphansQuery;
   const plant_categories = new Map();
@@ -123,7 +123,7 @@ async function fetchPlantInfo() {
     }
     plant_categories.get(instance.plant_catagory).push(instance);
     instance.inventory_remaining =
-      instance.inventory_available - (adoption_totals.get(instance.id) || 0);
+      Math.max(0, instance.inventory_available - (adoption_totals.get(instance.id) || 0));
   }
   return {plant_categories, plants};
 }
