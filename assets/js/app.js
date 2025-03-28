@@ -95,9 +95,15 @@ function thankyou(receipt) {
     receipt_table.append(result_line);
     }
     adoption_form.parentElement.append(receipt_table);
+    if(receipt.findIndex(i => i.got !== i.requested) >= 0) {
     const message = document.createElement("p");
     message.textContent =
-      "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt.";
+      "One or more of the plants you ordered were adopted while you were shopping. I gave you what is remaining and I apologize for the inconvenience.";
+    adoption_form.parentElement.append(message);
+    }
+    const message = document.createElement("p");
+    message.textContent =
+      "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt. If you want a record of this receipt, please take a picture with your phone or a screenshot.";
     adoption_form.parentElement.append(message);
     adoption_form.remove();
 
