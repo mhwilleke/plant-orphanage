@@ -66,19 +66,52 @@ async function sendToServer(data) {
     console.log("sending adoption request", data);
     const { plants } = await fetchPlantInfo();
     console.log("Plants remaining on server:", plants);
+    const receipt = [];
     await createAdopter(data.adopter);
     for (const orphan of data.plants) {
         const number_remaining = plants.find(p=>p.plant_type === orphan.plant).inventory_remaining;
-        await adoptPlant(orphan, data.adopter, number_remaining);
+        receipt.push(await adoptPlant(orphan, data.adopter, number_remaining));
     }
-    thankyou();
+    thankyou(receipt);
 }
-function thankyou() {
+function thankyou(receipt) {
+    console.log("adoption completed. Receipt:", receipt);
     var adoption_form = document.querySelector("#adoption-form");
+    const receipt_table = document.createElement("table");
+    receipt_table.classList.add("receipt");
+    const header_row = document.createElement("tr");
+    addTh("Plant", header_row);
+    addTh("Number Requested", header_row);
+    addTh("Number Reserved", header_row);
+    receipt_table.append(header_row);
+    for (const adoption of receipt) {
+        const result_line = document.createElement("tr");
+    addTd(adoption.plant, result_line);
+    addTd(adoption.requested, result_line);
+    addTd(adoption.got, result_line);
+    if(adoption.requested !== adoption.got) {
+        result_line.classList.add("missing-plants")
+    }
+    receipt_table.append(result_line);
+    }
+    adoption_form.parentElement.append(receipt_table);
     const message = document.createElement("p");
-    message.textContent = "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt.";
+    message.textContent =
+      "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt.";
     adoption_form.parentElement.append(message);
     adoption_form.remove();
+
+    function addTh(content, row) {
+      const elt = document.createElement("th");
+      elt.textContent = content;
+      row.append(elt);
+    }
+
+    function addTd(content, row) {
+      const elt = document.createElement("td");
+      elt.textContent = content;
+      row.append(elt);
+    }
 }
 async function createAdopter(person) {
     console.log("creating adopter", person);
