@@ -92,14 +92,13 @@ async function adoptPlant(plant, person) {
     console.log(response, error);
 }
 async function fetchPlantInfo() {
+  const adoptionsQuery = supabase
+    .from("AdoptedPlants")
+    .select("Orphaned_ID,inventory_requested");
   const orphansQuery = supabase
     .from("OrphanedPlants")
     .select("plant_type,inventory_available,Plant_info, id,plant_catagory")
     .order("plant_type");
-  const adoptionsQuery = supabase
-    .from("AdoptedPlants")
-    .select("Orphaned_ID,inventory_requested");
-  let { data: plants } = await orphansQuery;
   let { data: adoptions } = await adoptionsQuery;
   const adoption_totals = new Map();
   for (const instance of adoptions) {
@@ -107,6 +106,7 @@ async function fetchPlantInfo() {
     adoption_totals[instance.Orphaned_ID] =
       oldtotal + instance.inventory_requested;
   }
+  let { data: plants } = await orphansQuery;
   const plant_categories = new Map();
   for (const instance of plants) {
     if (!plant_categories.has(instance.plant_catagory)) {
