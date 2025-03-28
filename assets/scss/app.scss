@@ -23,3 +23,16 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/sidebar";
+
+.error-message {
+    color: red;
+    display:none;
+}
+
+.missing .error-message {
+    display: block;
+}
+
+.missing .form-control {
+    border-color: red;
+}

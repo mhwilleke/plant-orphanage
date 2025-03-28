@@ -100,7 +100,7 @@ async function adoptPlant(plant, person) {
 async function prepare_adoption_form() {
     const orphansQuery = supabase
         .from('OrphanedPlants')
-        .select('plant_type,inventory_available,Plant_info, id').order("plant_type");
+        .select('plant_type,inventory_available,Plant_info, id,plant_catagory').order("plant_type");
     const adoptionsQuery = supabase
         .from('AdoptedPlants')
         .select('Orphaned_ID,inventory_requested');
@@ -111,41 +111,52 @@ async function prepare_adoption_form() {
         let oldtotal = adoption_totals.get(instance.Orphaned_ID) || 0;
         adoption_totals[instance.Orphaned_ID] = oldtotal + instance.inventory_requested;
     }
+    const plant_categories = new Map();
     for (const instance of plants) {
+        if(!plant_categories.has(instance.plant_catagory)) {
+            plant_categories.set(instance.plant_catagory, []);
+        }
+        plant_categories.get(instance.plant_catagory).push(instance);
       instance.inventory_remaining  =  instance.inventory_available - (adoption_totals.get(instance.id) || 0);
     }
     var placeholder = document.querySelector("#placeholder");
     var template = document.querySelector('#orphaned-plant');
-    for (const orphan of plants) {
-        var clone = template.content.cloneNode(true);
-        var link = clone.querySelector("#plant-name");
-        link.textContent = orphan.plant_type;
-        link.href = orphan.Plant_info;
-        var notes = clone.querySelector("#notes-placeholder")
-        if (orphan.inventory_remaining === 0) {
-            notes.remove();
-        }
-        notes.textContent = `Starting Inventory: ${orphan.inventory_available}`;
-
-        var dropdown = clone.querySelector("#adopting-number");
-
-        if (orphan.inventory_remaining === 0) {
-            var message = document.createElement("p");
-            message.textContent = "All out!";
-            message.style = "padding-left: 1em;";
-            dropdown.after(message);
-            dropdown.remove();
-        } else {
-            for (var i = 1; i <= orphan.inventory_remaining; ++i) {
-                var option = document.createElement("option");
-                option.textContent = i;
-                option.value = i;
-                dropdown.appendChild(option);
+    console.log(plant_categories);
+    for(const [category_name,plants_in_category] of plant_categories) {
+        var header = document.createElement("H2");
+        header.textContent = category_name + "s";
+        placeholder.appendChild(header);
+        for (const orphan of plants_in_category) {
+            var clone = template.content.cloneNode(true);
+            var link = clone.querySelector("#plant-name");
+            link.textContent = orphan.plant_type;
+            link.href = orphan.Plant_info;
+            var notes = clone.querySelector("#notes-placeholder")
+            if (orphan.inventory_remaining === 0) {
+                notes.remove();
             }
-            dropdown.dataset.plant = orphan.plant_type;
-        }
+            notes.textContent = `Starting Inventory: ${orphan.inventory_available}`;
 
-        placeholder.appendChild(clone);
+            var dropdown = clone.querySelector("#adopting-number");
+
+            if (orphan.inventory_remaining === 0) {
+                var message = document.createElement("p");
+                message.textContent = "All out!";
+                message.style = "padding-left: 1em;";
+                dropdown.after(message);
+                dropdown.remove();
+            } else {
+                for (var i = 1; i <= orphan.inventory_remaining; ++i) {
+                    var option = document.createElement("option");
+                    option.textContent = i;
+                    option.value = i;
+                    dropdown.appendChild(option);
+                }
+                dropdown.dataset.plant = orphan.plant_type;
+            }
+
+            placeholder.appendChild(clone);
+        }
     }
     var button = document.querySelector("#adoption-form")
     button.addEventListener('submit', submit_adoption_form, false);
