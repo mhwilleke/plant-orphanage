@@ -64,7 +64,9 @@ function parseTheForm() {
 }
 async function sendToServer(data) {
     console.log("sending adoption request", data);
-    const { plants } = await fetchPlantInfo();
+    var placeholder = document.querySelector("#placeholder");
+    const season = placeholder ? placeholder.dataset.season : null;
+    const { plants } = await fetchPlantInfo(season);
     console.log("Plants remaining on server:", plants);
     const receipt = [];
     await createAdopter(data.adopter);
@@ -139,14 +141,20 @@ async function adoptPlant(plant, person, number_remaining) {
     console.log(response, error);
     return {plant: plant.plant, requested: plant.number, got: number_to_adopt}
 }
-async function fetchPlantInfo() {
+async function fetchPlantInfo(season) {
   const adoptionsQuery = supabase
     .from("AdoptedPlants")
     .select("Orphaned_ID,inventory_requested");
-  const orphansQuery = supabase
+  let orphansQuery = supabase
     .from("OrphanedPlants")
-    .select("plant_type,inventory_available,Plant_info, id,plant_catagory")
+    .select("plant_type,inventory_available,Plant_info, id,plant_catagory,season")
     .order("plant_type");
+
+  // Filter by season if provided
+  if (season) {
+    orphansQuery = orphansQuery.eq("season", season);
+  }
+
   let { data: adoptions } = await adoptionsQuery;
   const adoption_totals = new Map();
   for (const instance of adoptions) {
@@ -167,9 +175,16 @@ async function fetchPlantInfo() {
   return {plant_categories, plants};
 }
 async function prepare_adoption_form() {
-    const {plant_categories} = await fetchPlantInfo();
     var placeholder = document.querySelector("#placeholder");
+    // Only run on pages with the adoption form
+    if (!placeholder) {
+        return;
+    }
     var template = document.querySelector('#orphaned-plant');
+    // Get season from data attribute (spring or fall)
+    const season = placeholder.dataset.season;
+    console.log("Loading plants for season:", season);
+    const {plant_categories} = await fetchPlantInfo(season);
     console.log(plant_categories);
     for(const [category_name,plants_in_category] of plant_categories) {
         var header = document.createElement("H2");
@@ -212,8 +227,55 @@ async function prepare_adoption_form() {
     button.addEventListener('submit', submit_adoption_form, false);
 }
 
-if (document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded")
+// Color code the planting schedule table by month
+function colorCodePlantingTable() {
+    // Only run on pages with article content (like kitchen garden)
+    const article = document.querySelector('article');
+    if (!article) return;
+
+    // Get only the first table (seeding/sowing calendar)
+    const firstTable = article.querySelector('table');
+    if (!firstTable) return;
+
+    // Soft pastel colors for each month
+    const monthColors = {
+        'jan': 'rgba(200, 220, 240, 0.4)',  // soft blue (winter)
+        'feb': 'rgba(210, 200, 230, 0.4)',  // soft lavender
+        'mar': 'rgba(200, 230, 210, 0.4)',  // soft mint (early spring)
+        'apr': 'rgba(210, 240, 210, 0.4)',  // soft green (spring)
+        'may': 'rgba(240, 245, 200, 0.4)',  // soft yellow-green
+        'jun': 'rgba(255, 245, 200, 0.4)',  // soft yellow (summer)
+        'jul': 'rgba(255, 235, 200, 0.4)',  // soft peach
+        'aug': 'rgba(255, 225, 200, 0.4)',  // soft orange
+        'sep': 'rgba(245, 220, 200, 0.4)',  // soft tan (fall)
+        'oct': 'rgba(240, 210, 190, 0.4)',  // soft brown
+        'nov': 'rgba(220, 210, 200, 0.4)',  // soft gray-brown
+        'dec': 'rgba(210, 220, 230, 0.4)',  // soft gray-blue (winter)
+    };
+
+    const rows = firstTable.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        const firstCell = row.querySelector('td');
+        if (!firstCell) return;
+
+        const cellText = firstCell.textContent.toLowerCase();
+
+        // Find which month this row belongs to
+        for (const [month, color] of Object.entries(monthColors)) {
+            if (cellText.includes(month)) {
+                row.style.backgroundColor = color;
+                break;
+            }
+        }
+    });
+}
+
+if (document.readyState === "interactive" || document.readyState === "complete" || document.readyState === "loaded") {
     prepare_adoption_form();
-else {
-    document.addEventListener('DOMContentLoaded', prepare_adoption_form, false);
+    colorCodePlantingTable();
+} else {
+    document.addEventListener('DOMContentLoaded', () => {
+        prepare_adoption_form();
+        colorCodePlantingTable();
+    }, false);
 }
