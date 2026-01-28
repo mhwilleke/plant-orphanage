@@ -10,14 +10,47 @@ season: "spring"
 images: []
 ---
 
-Wow, It's year #4 of the Greenhouse Giveaway! It is with immense pleasure to nurture all of these lovelies, and to know that so many will be shared across our community. All seeds are organic from our very own Sow True Seeds. For details on the plant and how to grow it, please click on the link.
+**This is a celebratory 5 year anniversary of the Greenhouse Plant Giveaway!**
 
-Meanwhile, we have enough increased traffic (yay!) that we upgraded the ordering process.
+There's a deep value for me that regardless of the bigger world's distractions, there's a joyful community sharing experience that I can offer each Spring, and now Fall also! We are so fortunate to live in such a robust neighborhood, full of loving kindness, and sure, the occasional spat as well :) But we know each other, speak with each other, and value each other's humanness. 
 
-- Confirmation is immediate.
-- Confirmation will include what you ordered.
-- Confirmation will note anything that became unavailable if somebody ordered while you were shopping.
-- You cannot place an order without providing an email address, guaranteeing that I know who ordered the plants!
-- I've now sorted the plants between vegetables, flowers, herbs, and berry cuttings for an easier shopping experience.
+In that space, I'm so glad to offer another plant season to neighbors and friends. Each plant listing available for this Spring includes cooking suggestions and a link with growing tips.
 
-All plants will continue to grow in the greenhouse throughout April. Pick-up is intended to be during the Plant Garden Party on Saturday, April 26. [Please RSVP to help me plan well.](https://forms.gle/H6jtnGi65vmbAWkF9)
+**Ordering Plants**
+
+- You’ll receive **immediate confirmation** after placing your order
+- Your confirmation email will list **exactly what you ordered**
+- If a plant becomes unavailable while you’re shopping, that will be clearly noted
+- An **email address is required**, so I can track and prepare each order accurately
+
+**What to Expect this Year**
+
+Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.\
+\
+**IF early seeding goes well, below is what you can expect on the order form to be released on March 28**.\
+\
+*Vegetables*\
+Lettuce\
+Sweet Peppers\
+Hot Fish Peppers\
+Purple Cherokee Tomatoes (slicers)\
+Lost Marbles Cherry Tomatoes\
+Zucchini\
+Mid-June Pick-Up: Sugar Baby Pumpkins (need large space)\
+Mid-June Pick-Up: Butternut (need trellis)\
+Mid-June Pick-Up: Cantaloupe (need trellis)
+
+*Native Pollinators*\
+Ironweed (Vernonia)\
+Lobelia Cardinalis\
+Garden Phlox\
+Rudbeckia\
+Swamp Milkweed\
+\
+*Cottage Annuals*\
+Calendula (will often self-seed if left)\
+Celosia\
+Snapdragons\
+Hibiscus Luna Mix\
+Hot Mix Zinnia (will often self-seed if left)\
+Penstemon ‘Electric Blue’\
