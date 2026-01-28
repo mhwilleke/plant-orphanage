@@ -10,6 +10,11 @@ season: "spring"
 images: []
 ---
 
+<div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+<img src="greenhouse-wide.jpg" alt="Greenhouse" style="max-width: 48%; border-radius: 8px;">
+<img src="HoopBed.jpg" alt="Hoop Bed" style="max-width: 48%; border-radius: 8px;">
+</div>
+
 **This is a celebratory 5 year anniversary of the Greenhouse Plant Giveaway!**
 
 Mark your calendar for **Saturday, May 3 from 3p - 5p** in my Garden!
