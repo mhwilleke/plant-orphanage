@@ -8,8 +8,6 @@ draft: false
 images: []
 ---
 
-## Planting Schedule & Harvest Dates
-
 # Kitchen Garden Master Plan
 
 **Zone 7b · Heated Greenhouse · Hoop, Square, Stone & Creek Beds**  
