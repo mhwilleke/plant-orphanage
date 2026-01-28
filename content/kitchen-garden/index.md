@@ -13,7 +13,7 @@ images: []
 **Zone 7b · Heated Greenhouse · Hoop, Square, Stone & Creek Beds**  
 _Last frost ~ April 15 · First frost ~ Oct 25_
 
-This harvest plan is sized for ~8 adults and a preservation buffer.
+This planting and harvest plan is sized for ~8 adults and a preservation buffer.
 
 ---
 
