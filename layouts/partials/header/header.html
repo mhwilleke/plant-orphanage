@@ -8,7 +8,7 @@
     <div class="ms-auto">
     {{ range .Site.Menus.main }}
       <span class="navbar-text">
-        <a href="{{ .URL }}">{{- .Name -}}</a>
+        <a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{- .Name -}}</a>
       </span>
     {{ end }}
     </div>
