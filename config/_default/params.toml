@@ -1,15 +1,15 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Plant Orphanage"
+title = "Our Pine Corner"
 titleSeparator = "-"
-titleAddition = "Adopt My Plants!"
-description = ""
+titleAddition = "Garden & Homestead"
+description = "A garden and homestead in the mountains"
 
 ## Open Graph
 images = ["hyas.png"]
 ogLocale = "en_US"
-titleHome = "Plant Orphanage"
+titleHome = "Our Pine Corner"
 
 ## Twitter Cards
 twitterSite = "@gethyas"
