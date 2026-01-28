@@ -108,6 +108,14 @@ F = Winter Holding
 
 ## Our Backyard Chickens
 
-<img src="https://photos.fife.usercontent.google.com/pw/AP1GczOyZeDS3eignvNkyCQnc2ENGxNHcZZJGAohWJ-czXjAVFoO945LLRI3AA=w1238-h1650-s-no-gm" alt="Our backyard chickens" class="img-fluid" style="max-width: 500px; border-radius: 8px;">
+![Our backyard chickens](chickens.jpg)
 
-*Content coming soon - add notes about your 6 backyard chickens here.*
+## 🥚 Egg Production 
+*6 adult laying hens, no supplemental winter lighting*
+
+| Season | Eggs per week (total flock) | What this looks like |
+|---|---|---|
+| **Spring** | ~24–30 eggs | 2–2½ dozen most weeks |
+| **Summer** | ~18–24 eggs | 1½–2 dozen; heat may cause dips |
+| **Fall** | ~12–18 eggs | About 1–1½ dozen |
+| **Winter** | ~6–12 eggs | Half to one dozen (no lights) |
