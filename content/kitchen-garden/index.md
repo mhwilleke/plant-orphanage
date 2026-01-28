@@ -108,7 +108,7 @@ F = Winter Holding
 
 ## Our Backyard Chickens
 
-![Our backyard chickens](chickens.jpg)
+<img src="chickens.jpg" alt="Our backyard chickens" style="max-width: 250px; border-radius: 8px;">
 
 ## 🥚 Egg Production 
 *6 adult laying hens, no supplemental winter lighting*
