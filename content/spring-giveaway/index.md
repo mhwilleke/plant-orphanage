@@ -17,7 +17,7 @@ images: []
 
 **This is a celebratory 5 year anniversary of the Greenhouse Plant Giveaway!**
 
-Mark your calendar for **Saturday, May 3 from 3p - 5p** in my Garden!
+Mark your calendar for **Saturday, May 2 from 3p - 5p** in my Garden!
 
 There's a deep value for me that regardless of the bigger world's distractions, there's a joyful community sharing experience that I can offer each Spring, and now Fall also! We are so fortunate to live in such a robust neighborhood, full of loving kindness, and sure, the occasional spat as well :) But we know each other, speak with each other, and value each other's humanness. 
 
