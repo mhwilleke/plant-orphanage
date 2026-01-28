@@ -45,3 +45,319 @@ table.receipt {
 border-radius: 4px;
 margin-bottom: 2em;
 }
+
+// Homepage watercolor styles
+.homepage-watercolor {
+  position: relative;
+  min-height: calc(100vh - 120px);
+  margin: -1.5rem -0.75rem -1rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.watercolor-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.homepage-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homepage-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: #2d5a47;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.homepage-lead {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.4rem;
+  color: #4a6b5a;
+  font-style: italic;
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.garden-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow:
+    0 4px 20px rgba(45, 90, 71, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(45, 90, 71, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 30px rgba(45, 90, 71, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  h3 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2d5a47;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #5a6b5a;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.garden-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #4a7c59 0%, #3d6b4a 100%);
+  color: #fff;
+  padding: 0.65rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(45, 90, 71, 0.25);
+
+  &:hover {
+    background: linear-gradient(135deg, #3d6b4a 0%, #2d5a47 100%);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(45, 90, 71, 0.35);
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-title {
+    font-size: 2.5rem;
+  }
+
+  .homepage-lead {
+    font-size: 1.1rem;
+  }
+
+  .homepage-content {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .garden-card {
+    margin-bottom: 1rem;
+  }
+}
+
+// Content pages (kitchen garden, etc.)
+article {
+  padding: 1rem 0 3rem;
+
+  h1 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #2d5a47;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e8f0e8;
+  }
+
+  .article-lead {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.15rem;
+    color: #5a7c69;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #3d6b4a;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e8f0e8;
+  }
+
+  // Style h1 inside content (markdown # headings) smaller
+  .content h1,
+  & > h1:not(:first-child) {
+    font-size: 1.5rem;
+    color: #4a7c59;
+    border-bottom: 1px solid #e8f0e8;
+    margin-top: 2.5rem;
+  }
+
+  h3 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #4a7c59;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5a7c69;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #4a5a4a;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  strong {
+    color: #3d5a4a;
+    font-weight: 600;
+  }
+
+  em {
+    color: #5a6b5a;
+  }
+
+  ul, ol {
+    color: #4a5a4a;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #d8e8d8;
+    margin: 2.5rem 0;
+  }
+
+  // Table styling
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.85rem;
+    background: #fafcfa;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(45, 90, 71, 0.08);
+
+    thead {
+      background: linear-gradient(135deg, #4a7c59 0%, #3d6b4a 100%);
+
+      th {
+        color: #fff;
+        font-weight: 500;
+        text-align: left;
+        padding: 0.75rem 0.6rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e8f0e8;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: #f0f7f0;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        padding: 0.6rem;
+        color: #4a5a4a;
+        vertical-align: top;
+
+        strong {
+          color: #2d5a47;
+        }
+      }
+    }
+  }
+
+  // Responsive tables
+  @media (max-width: 992px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  // Code/preformatted text
+  code {
+    background: #f0f5f0;
+    color: #3d6b4a;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background: #f5f8f5;
+    border: 1px solid #e0e8e0;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left: 3px solid #4a7c59;
+    margin: 1.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    background: #f8faf8;
+    border-radius: 0 8px 8px 0;
+
+    p {
+      color: #5a6b5a;
+      font-style: italic;
+      margin-bottom: 0;
+    }
+  }
+}
+
