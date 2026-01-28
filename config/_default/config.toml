@@ -1,4 +1,4 @@
-baseurl = "https://mhwilleke.github.io/plant-orphanage/"
+baseurl = "https://pinecorner.org/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
