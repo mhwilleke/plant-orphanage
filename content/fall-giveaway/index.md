@@ -10,6 +10,10 @@ season: "fall"
 images: []
 ---
 
+<div style="text-align: center; margin-bottom: 1.5rem;">
+<img src="greenhouse.jpg" alt="Greenhouse" style="max-width: 500px; border-radius: 8px;">
+</div>
+
 Welcome to the Fall Plant Giveaway! Find perennials, cool-season crops, and plants ready for fall planting.
 
 - Confirmation is immediate.
