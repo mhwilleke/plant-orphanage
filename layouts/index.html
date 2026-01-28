@@ -1,61 +1,256 @@
 {{ define "main" }}
-<div class="row justify-content-center">
-  <div class="col-lg-7 pb-5 text-center">
-    <h1>{{ .Title }}</h1>
-    <p>{{ .Params.Lead | safeHTML }}</p>
-    <figure><img style="width:100%; max-width: 400px; object-fit: contain;" src="https://lh3.googleusercontent.com/pw/AP1GczPfeAv0iqk4YY3XJdpgH4mEqN3O_D-vAWSENd_3QFwVWJoF6N1hVZGenwSHhAOVaZJIGTXNu1zhp1dNsCjkJlPnEcf2rrjOTBrQgljdOOGTz8Ymfh-sz45tzLUp8S7SQKA9M0HAQom6d9s8VHtm0GW0uA=w2002-h1502-s-no-gm"></figure>
-  </div>
-    <form id="adoption-form">
-      <div class="form-group" id="email-group">
-        <label for="adopter-email">Email address  (required!)</label>
-        <input type="email" class="form-control" id="adopter-email" aria-describedby="emailHelp" placeholder="Enter email">
-        <p class="error-message">Email is required in order to submit order.</p>
-      </div>
-      <div class="form-group">
-        <label for="adopter">Name</label>
-        <input type="text" class="form-control" id="adopter" placeholder="Name">
-      </div>
-      <div class="form-group">
-        <label for="address">Street Address</label>
-        <input type="text" class="form-control" id="address" placeholder="Street Address">
-      </div>
-      <p>
-        Wow, It's year #4 of the Greenhouse Giveaway! It is with immense pleasure to nurture all of these lovelies, and to know that so many will be shared across our community. All seeds are organic from our very own Sow True Seeds. For details on the plant and how to grow it, please click on the link. 
-      </p><p>
-        Meanwhile, we have enough increased traffic (yay!) that we upgraded the ordering process. 
-        <ul>
-          <li>Confirmation is immediate.</li>
-          <li>Confirmation will include what you ordered.</li>
-          <li>Confirmation will note anything that became unavailable if somebody ordered while you were shopping.</li>
-          <li>You cannot place an order without providing an email address, guaranteeing that I know who ordered the plants!</li>
-          <li>I've now sorted the plants between vegetables, flowers, herbs, and berry cuttings for an easier shopping experience.</li>
-        </ul>
-      </p><p> 
-        All plants will continue to grow in the greenhouse throughout April. Pick-up is intended to be during the Plant Garden Party on Saturday, April 26. <a href="https://forms.gle/H6jtnGi65vmbAWkF9" target="_blank">Please RSVP to help me plan well.</a>
-      </p>
-      <p>
-      </p>
-      <div id="placeholder">
+<div class="homepage-watercolor">
+  <!-- Watercolor SVG Background -->
+  <svg class="watercolor-bg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Watercolor texture filters -->
+      <filter id="watercolor" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+        <feGaussianBlur stdDeviation="1.5"/>
+      </filter>
 
+      <filter id="watercolor-soft" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+        <feGaussianBlur stdDeviation="2"/>
+      </filter>
+
+      <filter id="paper-texture">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" stitchTiles="stitch" result="noise"/>
+        <feDiffuseLighting in="noise" lighting-color="#faf8f5" surfaceScale="2" result="light">
+          <feDistantLight azimuth="45" elevation="60"/>
+        </feDiffuseLighting>
+        <feBlend in="SourceGraphic" in2="light" mode="multiply"/>
+      </filter>
+
+      <!-- Gradients for sky wash -->
+      <linearGradient id="sky-wash" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
+        <stop offset="40%" style="stop-color:#f5ebe0;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#faf8f5;stop-opacity:0.3" />
+      </linearGradient>
+
+      <!-- Pine tree greens -->
+      <linearGradient id="pine-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#2d5a47;stop-opacity:0.85" />
+        <stop offset="100%" style="stop-color:#1a3d2e;stop-opacity:0.9" />
+      </linearGradient>
+
+      <linearGradient id="pine-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#4a7c59;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#3d6b4a;stop-opacity:0.85" />
+      </linearGradient>
+
+      <linearGradient id="pine-light" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#6b9b7a;stop-opacity:0.7" />
+        <stop offset="100%" style="stop-color:#5a8a69;stop-opacity:0.75" />
+      </linearGradient>
+
+      <!-- Garden colors -->
+      <linearGradient id="soil" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#8b7355;stop-opacity:0.7" />
+        <stop offset="100%" style="stop-color:#6b5344;stop-opacity:0.8" />
+      </linearGradient>
+
+      <linearGradient id="garden-green" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" style="stop-color:#7cb342;stop-opacity:0.75" />
+        <stop offset="100%" style="stop-color:#9ccc65;stop-opacity:0.65" />
+      </linearGradient>
+    </defs>
+
+    <!-- Paper/cream background -->
+    <rect width="100%" height="100%" fill="#faf8f5"/>
+
+    <!-- Sky watercolor wash -->
+    <ellipse cx="960" cy="-200" rx="1400" ry="600" fill="url(#sky-wash)" filter="url(#watercolor-soft)" opacity="0.6"/>
+
+    <!-- Distant misty mountains/hills -->
+    <path d="M0,420 Q200,380 400,400 T800,370 T1200,390 T1600,360 T1920,400 L1920,500 L0,500 Z"
+          fill="#b8c9be" filter="url(#watercolor-soft)" opacity="0.4"/>
+
+    <!-- Background Norwegian spruce (far/misty) -->
+    <g filter="url(#watercolor-soft)" opacity="0.5">
+      <!-- Far left spruces -->
+      <path d="M120,480 L120,360 M120,370 Q90,400 70,410 M120,370 Q150,400 170,410 M120,390 Q85,425 60,440 M120,390 Q155,425 180,440 M120,410 Q80,450 55,470 M120,410 Q160,450 185,470 M120,435 Q75,475 50,495 M120,435 Q165,475 190,495" stroke="#7a9b87" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M260,500 L260,340 M260,350 Q225,385 200,400 M260,350 Q295,385 320,400 M260,380 Q220,420 190,445 M260,380 Q300,420 330,445 M260,415 Q215,460 185,485 M260,415 Q305,460 335,485 M260,450 Q210,495 180,520 M260,450 Q310,495 340,520" stroke="#6b8c78" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M400,490 L400,350 M400,360 Q365,395 340,410 M400,360 Q435,395 460,410 M400,390 Q360,430 330,455 M400,390 Q440,430 470,455 M400,425 Q355,470 325,495 M400,425 Q445,470 475,495" stroke="#7a9b87" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- Far right spruces -->
+      <path d="M1520,485 L1520,345 M1520,355 Q1485,390 1460,405 M1520,355 Q1555,390 1580,405 M1520,385 Q1480,425 1450,450 M1520,385 Q1560,425 1590,450 M1520,420 Q1475,465 1445,490 M1520,420 Q1565,465 1595,490" stroke="#6b8c78" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M1680,495 L1680,370 M1680,380 Q1650,410 1630,420 M1680,380 Q1710,410 1730,420 M1680,405 Q1645,440 1620,460 M1680,405 Q1715,440 1740,460 M1680,435 Q1640,475 1615,500 M1680,435 Q1720,475 1745,500" stroke="#7a9b87" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M1820,485 L1820,360 M1820,370 Q1790,400 1770,415 M1820,370 Q1850,400 1870,415 M1820,395 Q1785,430 1760,450 M1820,395 Q1855,430 1880,450 M1820,425 Q1780,465 1755,490 M1820,425 Q1860,465 1885,490" stroke="#6b8c78" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- Mid-ground Norwegian spruce -->
+    <g filter="url(#watercolor)">
+      <!-- Left side spruces -->
+      <g opacity="0.8">
+        <rect x="45" y="560" width="10" height="40" fill="#5d4e37"/>
+        <path d="M50,560 L50,320 M50,330 Q10,370 -20,390 M50,330 Q90,370 120,390 M50,370 Q5,415 -30,445 M50,370 Q95,415 130,445 M50,415 Q0,465 -40,500 M50,415 Q100,465 140,500 M50,465 Q-5,520 -50,555 M50,465 Q105,520 150,555" stroke="url(#pine-mid)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      </g>
+      <g opacity="0.85">
+        <rect x="155" y="580" width="12" height="45" fill="#5d4e37"/>
+        <path d="M160,580 L160,290 M160,300 Q115,345 85,370 M160,300 Q205,345 235,370 M160,350 Q110,400 75,435 M160,350 Q210,400 245,435 M160,405 Q105,460 65,500 M160,405 Q215,460 255,500 M160,465 Q100,525 55,565 M160,465 Q220,525 265,565" stroke="url(#pine-dark)" stroke-width="16" fill="none" stroke-linecap="round"/>
+      </g>
+      <g opacity="0.8">
+        <rect x="265" y="570" width="10" height="40" fill="#5d4e37"/>
+        <path d="M270,570 L270,350 M270,360 Q230,400 205,420 M270,360 Q310,400 335,420 M270,400 Q225,445 195,475 M270,400 Q315,445 345,475 M270,445 Q220,495 185,530 M270,445 Q320,495 355,530" stroke="url(#pine-mid)" stroke-width="13" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- Right side spruces -->
+      <g opacity="0.8">
+        <rect x="1645" y="575" width="10" height="40" fill="#5d4e37"/>
+        <path d="M1650,575 L1650,340 M1650,350 Q1610,395 1580,420 M1650,350 Q1690,395 1720,420 M1650,395 Q1605,445 1570,480 M1650,395 Q1695,445 1730,480 M1650,445 Q1600,500 1565,540 M1650,445 Q1700,500 1735,540" stroke="url(#pine-mid)" stroke-width="13" fill="none" stroke-linecap="round"/>
+      </g>
+      <g opacity="0.85">
+        <rect x="1754" y="560" width="12" height="45" fill="#5d4e37"/>
+        <path d="M1760,560 L1760,300 M1760,310 Q1715,355 1685,380 M1760,310 Q1805,355 1835,380 M1760,360 Q1710,410 1675,445 M1760,360 Q1810,410 1845,445 M1760,415 Q1705,470 1665,510 M1760,415 Q1815,470 1855,510 M1760,475 Q1700,535 1660,575 M1760,475 Q1820,535 1860,575" stroke="url(#pine-dark)" stroke-width="15" fill="none" stroke-linecap="round"/>
+      </g>
+      <g opacity="0.8">
+        <rect x="1865" y="580" width="10" height="35" fill="#5d4e37"/>
+        <path d="M1870,580 L1870,370 M1870,380 Q1835,415 1810,435 M1870,380 Q1905,415 1930,435 M1870,420 Q1830,460 1800,490 M1870,420 Q1910,460 1940,490 M1870,465 Q1825,515 1795,550 M1870,465 Q1915,515 1945,550" stroke="url(#pine-mid)" stroke-width="12" fill="none" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- Foreground large Norwegian spruce -->
+    <g filter="url(#watercolor)">
+      <!-- Left prominent spruce -->
+      <g opacity="0.9">
+        <rect x="70" y="720" width="20" height="80" fill="#4a3728"/>
+        <path d="M80,720 L80,220
+          M80,230 Q20,290 -30,330 M80,230 Q140,290 190,330
+          M80,290 Q10,360 -50,410 M80,290 Q150,360 210,410
+          M80,360 Q0,440 -70,500 M80,360 Q160,440 230,500
+          M80,440 Q-10,530 -90,600 M80,440 Q170,530 250,600
+          M80,530 Q-20,630 -110,700 M80,530 Q180,630 270,700
+          M80,620 Q-25,720 -120,780 M80,620 Q185,720 280,780"
+          stroke="url(#pine-dark)" stroke-width="22" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- Right prominent spruce -->
+      <g opacity="0.9">
+        <rect x="1830" y="750" width="20" height="80" fill="#4a3728"/>
+        <path d="M1840,750 L1840,200
+          M1840,210 Q1775,275 1720,320 M1840,210 Q1905,275 1960,320
+          M1840,275 Q1765,350 1705,405 M1840,275 Q1915,350 1975,405
+          M1840,350 Q1755,435 1690,500 M1840,350 Q1925,435 1990,500
+          M1840,435 Q1745,535 1675,610 M1840,435 Q1935,535 2005,610
+          M1840,530 Q1735,640 1660,720 M1840,530 Q1945,640 2020,720
+          M1840,630 Q1730,745 1650,810 M1840,630 Q1950,745 2030,810"
+          stroke="url(#pine-dark)" stroke-width="24" fill="none" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- Ground/grass area -->
+    <path d="M0,850 Q480,820 960,840 T1920,830 L1920,1080 L0,1080 Z"
+          fill="#c5d5a8" filter="url(#watercolor)" opacity="0.6"/>
+
+    <!-- Kitchen garden beds -->
+    <g filter="url(#watercolor)">
+      <!-- Garden bed frames (wooden) -->
+      <rect x="580" y="920" width="180" height="100" rx="4" fill="#a08060" opacity="0.75"/>
+      <rect x="780" y="910" width="160" height="110" rx="4" fill="#a08060" opacity="0.75"/>
+      <rect x="960" y="920" width="180" height="100" rx="4" fill="#a08060" opacity="0.75"/>
+      <rect x="1160" y="915" width="150" height="105" rx="4" fill="#a08060" opacity="0.75"/>
+
+      <!-- Soil in beds -->
+      <rect x="588" y="928" width="164" height="84" rx="2" fill="url(#soil)"/>
+      <rect x="788" y="918" width="144" height="94" rx="2" fill="url(#soil)"/>
+      <rect x="968" y="928" width="164" height="84" rx="2" fill="url(#soil)"/>
+      <rect x="1168" y="923" width="134" height="89" rx="2" fill="url(#soil)"/>
+
+      <!-- Plants in garden beds - leafy greens -->
+      <g opacity="0.85">
+        <!-- Bed 1 - lettuce/greens -->
+        <ellipse cx="620" cy="960" rx="18" ry="14" fill="#7cb342"/>
+        <ellipse cx="655" cy="955" rx="20" ry="16" fill="#8bc34a"/>
+        <ellipse cx="690" cy="962" rx="17" ry="13" fill="#7cb342"/>
+        <ellipse cx="725" cy="958" rx="19" ry="15" fill="#9ccc65"/>
+
+        <!-- Bed 2 - mixed vegetables -->
+        <ellipse cx="815" cy="950" rx="16" ry="20" fill="#66bb6a"/>
+        <ellipse cx="845" cy="955" rx="14" ry="18" fill="#81c784"/>
+        <ellipse cx="875" cy="948" rx="18" ry="22" fill="#4caf50"/>
+        <ellipse cx="905" cy="958" rx="15" ry="17" fill="#66bb6a"/>
+
+        <!-- Bed 3 - tomatoes/peppers with stakes -->
+        <line x1="1000" y1="970" x2="1000" y2="920" stroke="#8d6e63" stroke-width="3"/>
+        <line x1="1040" y1="970" x2="1040" y2="915" stroke="#8d6e63" stroke-width="3"/>
+        <line x1="1080" y1="970" x2="1080" y2="918" stroke="#8d6e63" stroke-width="3"/>
+        <line x1="1120" y1="970" x2="1120" y2="922" stroke="#8d6e63" stroke-width="3"/>
+        <ellipse cx="1000" cy="945" rx="22" ry="28" fill="#43a047"/>
+        <ellipse cx="1040" cy="940" rx="24" ry="32" fill="#388e3c"/>
+        <ellipse cx="1080" cy="943" rx="22" ry="30" fill="#43a047"/>
+        <ellipse cx="1120" cy="948" rx="20" ry="26" fill="#4caf50"/>
+        <!-- Tomatoes -->
+        <circle cx="1035" cy="935" r="6" fill="#ef5350" opacity="0.8"/>
+        <circle cx="1050" cy="950" r="5" fill="#e53935" opacity="0.8"/>
+        <circle cx="1085" cy="938" r="5" fill="#ef5350" opacity="0.8"/>
+
+        <!-- Bed 4 - herbs -->
+        <ellipse cx="1195" cy="958" rx="14" ry="12" fill="#aed581"/>
+        <ellipse cx="1220" cy="952" rx="16" ry="14" fill="#c5e1a5"/>
+        <ellipse cx="1248" cy="960" rx="13" ry="11" fill="#aed581"/>
+        <ellipse cx="1275" cy="955" rx="15" ry="13" fill="#dce775"/>
+      </g>
+    </g>
+
+    <!-- Garden path -->
+    <path d="M960,1080 Q950,1000 960,920"
+          stroke="#d7ccc8" stroke-width="40" fill="none" filter="url(#watercolor)" opacity="0.5"/>
+
+    <!-- Decorative flowers scattered -->
+    <g filter="url(#watercolor)" opacity="0.7">
+      <circle cx="450" cy="900" r="8" fill="#f48fb1"/>
+      <circle cx="470" cy="920" r="6" fill="#ce93d8"/>
+      <circle cx="430" cy="915" r="7" fill="#f48fb1"/>
+
+      <circle cx="1450" cy="895" r="7" fill="#fff176"/>
+      <circle cx="1480" cy="910" r="8" fill="#ffcc80"/>
+      <circle cx="1460" cy="925" r="6" fill="#fff176"/>
+    </g>
+
+    <!-- Subtle paper texture overlay -->
+    <rect width="100%" height="100%" fill="#faf8f5" opacity="0.15" filter="url(#paper-texture)"/>
+  </svg>
+
+  <!-- Content overlay -->
+  <div class="homepage-content">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center pb-4">
+        <h1 class="homepage-title">{{ .Title }}</h1>
+        <p class="homepage-lead">{{ .Params.Lead | safeHTML }}</p>
       </div>
-      <button id="submit" type="submit" class="btn btn-primary" style="margin-top:2.5em;">Submit</button>
-    </form>
-</div>
-<template id="orphaned-plant">
-  <div class="input-group mb-3" style="margin-top:2.5em;">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="adopting-number"><a id="plant-name" target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a></label>
     </div>
-    <select class="custom-select number-wanted" id="adopting-number">
-      <option selected value="0">0</option>
-    </select>
-  </div>
-  <p id="notes-placeholder" style="margin:-0.5em 0 0;"></p>
-</template>
-{{ end }}
 
-{{ define "section" }}
-<section class="section container-fluid">
-  {{- .Content -}}
-</section>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="garden-card">
+          <div class="card-icon">🌱</div>
+          <h3>Spring Plant Giveaway</h3>
+          <p>Adopt greenhouse plants nurtured through the winter, ready for your spring garden.</p>
+          <a href="{{ "spring-giveaway/" | relURL }}" class="garden-btn">View Spring Plants</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="garden-card">
+          <div class="card-icon">🍂</div>
+          <h3>Fall Plant Giveaway</h3>
+          <p>Find plants ready for fall planting, including perennials and cool-season crops.</p>
+          <a href="{{ "fall-giveaway/" | relURL }}" class="garden-btn">View Fall Plants</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="garden-card">
+          <div class="card-icon">🥬</div>
+          <h3>Kitchen Garden</h3>
+          <p>Explore our kitchen garden with planting schedules, harvest dates, and backyard chickens.</p>
+          <a href="{{ "kitchen-garden/" | relURL }}" class="garden-btn">Visit Kitchen Garden</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {{ end }}
