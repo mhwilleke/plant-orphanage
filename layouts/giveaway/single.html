@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-lg-7 pb-5 text-center">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.Lead | safeHTML }}</p>
+    <figure><img style="width:100%; max-width: 400px; object-fit: contain;" src="https://lh3.googleusercontent.com/pw/AP1GczPfeAv0iqk4YY3XJdpgH4mEqN3O_D-vAWSENd_3QFwVWJoF6N1hVZGenwSHhAOVaZJIGTXNu1zhp1dNsCjkJlPnEcf2rrjOTBrQgljdOOGTz8Ymfh-sz45tzLUp8S7SQKA9M0HAQom6d9s8VHtm0GW0uA=w2002-h1502-s-no-gm"></figure>
+  </div>
+    <form id="adoption-form">
+      <div class="form-group" id="email-group">
+        <label for="adopter-email">Email address  (required!)</label>
+        <input type="email" class="form-control" id="adopter-email" aria-describedby="emailHelp" placeholder="Enter email">
+        <p class="error-message">Email is required in order to submit order.</p>
+      </div>
+      <div class="form-group">
+        <label for="adopter">Name</label>
+        <input type="text" class="form-control" id="adopter" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="address">Street Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Street Address">
+      </div>
+      {{ .Content }}
+      <div id="placeholder" data-season="{{ .Params.season }}">
+
+      </div>
+      <button id="submit" type="submit" class="btn btn-primary" style="margin-top:2.5em;">Submit</button>
+    </form>
+</div>
+<template id="orphaned-plant">
+  <div class="input-group mb-3" style="margin-top:2.5em;">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="adopting-number"><a id="plant-name" target="_blank" href="https://www.seedsavers.org/parade-organic-cucumber">Parade Cucumber</a></label>
+    </div>
+    <select class="custom-select number-wanted" id="adopting-number">
+      <option selected value="0">0</option>
+    </select>
+  </div>
+  <p id="notes-placeholder" style="margin:-0.5em 0 0;"></p>
+</template>
+{{ end }}
