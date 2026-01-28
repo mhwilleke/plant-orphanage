@@ -32,7 +32,7 @@ In that space, I'm so glad to offer another plant season to neighbors and friend
 
 **What to Expect this Year**
 
-Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.\
+Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. I also got better insight for the differences between warm and cool season veggies and herbs. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.\
 \
 **IF early seeding goes well, below is what you can expect on the order form to be released on March 28**.\
 \
@@ -52,8 +52,8 @@ Ironweed (Vernonia)\
 Lobelia Cardinalis\
 Garden Phlox\
 Rudbeckia\
-Swamp Milkweed\
-\
+Swamp Milkweed
+
 *Cottage Annuals*\
 Calendula (will often self-seed if left)\
 Celosia\
@@ -61,3 +61,13 @@ Snapdragons\
 Hibiscus Luna Mix\
 Hot Mix Zinnia (will often self-seed if left)\
 Penstemon ‘Electric Blue’
+
+*Warm Season Herbs*
+Thai Basil\
+Genovese Basil\
+Lemon Basil\
+Holy Basil (Tulsi)\
+Summer Savory\
+Oregano\
+Thyme\
+Purple Culinary Sage
