@@ -5,8 +5,7 @@ lead: "Fall Plants Ready for Adoption!"
 date: 2020-04-17T12:18:10+00:00
 lastmod: 2020-04-17T12:18:10+00:00
 draft: false
-type: "giveaway"
-layout: "single"
+layout: "giveaway"
 season: "fall"
 images: []
 ---
