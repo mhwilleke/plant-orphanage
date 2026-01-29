@@ -3,7 +3,7 @@
   <div class="col-lg-7 pb-5 text-center">
     <h1>{{ .Title }}</h1>
     <p>{{ .Params.Lead | safeHTML }}</p>
-    <figure><img style="width:100%; max-width: 400px; object-fit: contain;" src="https://lh3.googleusercontent.com/pw/AP1GczPfeAv0iqk4YY3XJdpgH4mEqN3O_D-vAWSENd_3QFwVWJoF6N1hVZGenwSHhAOVaZJIGTXNu1zhp1dNsCjkJlPnEcf2rrjOTBrQgljdOOGTz8Ymfh-sz45tzLUp8S7SQKA9M0HAQom6d9s8VHtm0GW0uA=w2002-h1502-s-no-gm"></figure>
+    {{ if not .Params.hide_image }}<figure><img style="width:100%; max-width: 400px; object-fit: contain;" src="https://lh3.googleusercontent.com/pw/AP1GczPfeAv0iqk4YY3XJdpgH4mEqN3O_D-vAWSENd_3QFwVWJoF6N1hVZGenwSHhAOVaZJIGTXNu1zhp1dNsCjkJlPnEcf2rrjOTBrQgljdOOGTz8Ymfh-sz45tzLUp8S7SQKA9M0HAQom6d9s8VHtm0GW0uA=w2002-h1502-s-no-gm"></figure>{{ end }}
   </div>
     <form id="adoption-form">
       <div class="form-group" id="email-group">
