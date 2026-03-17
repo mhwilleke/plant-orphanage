@@ -32,25 +32,20 @@ In that space, I'm so glad to offer another plant season to neighbors and friend
 
 **What to Expect this Year**
 
-Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. I also got better insight for the differences between warm and cool season veggies and herbs. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.\
-\
-**IF early seeding goes well, below is what you can expect on the order form to be released on March 28**.\
-\
+Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. I also got better insight for the differences between warm and cool season veggies and herbs. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.
+
+**IF early seeding goes well, below is what you can expect on the order form to be released on March 28**.
+
 *Vegetables*\
 Lettuce\
 Sweet Peppers\
-Hot Fish Peppers\
+Jalapenos\
+Bell Peppers\
 Purple Cherokee Tomatoes (slicers)\
 Lost Marbles Cherry Tomatoes\
 Zucchini\
-Mid-June Pick-Up: Sugar Baby Pumpkins (need large space)\
-Mid-June Pick-Up: Butternut (need trellis)\
-Mid-June Pick-Up: Cantaloupe (need trellis)
 
 *Native Pollinators*\
-Ironweed (Vernonia)\
-Lobelia Cardinalis\
-Garden Phlox\
 Rudbeckia\
 Swamp Milkweed
 
@@ -59,8 +54,6 @@ Calendula (will often self-seed if left)\
 Celosia\
 Snapdragons\
 Hibiscus Luna Mix\
-Hot Mix Zinnia (will often self-seed if left)\
-Penstemon ‘Electric Blue’
 
 *Warm Season Herbs*
 Thai Basil\
@@ -68,6 +61,4 @@ Genovese Basil\
 Lemon Basil\
 Holy Basil (Tulsi)\
 Summer Savory\
-Oregano\
-Thyme\
-Purple Culinary Sage
+
