@@ -19,9 +19,9 @@ images: []
 
 Mark your calendar for **Saturday, May 2 from 3p - 5p** in my Garden!
 
-There's a deep value for me that regardless of the bigger world's distractions, there's a joyful community sharing experience that I can offer each Spring, and now Fall also! We are so fortunate to live in such a robust neighborhood, full of loving kindness, and sure, the occasional spat as well :) But we know each other, speak with each other, and value each other's humanness. 
+There's a deep value for me that regardless of the bigger world's distractions, there's a joyful community sharing experience that I can offer each Spring and Fall. We are so fortunate to live in such a robust neighborhood, full of loving kindness, and sure, the occasional spat as well :) But we know each other, speak with each other, and value each other's humanness. 
 
-In that space, I'm so glad to offer another plant season to neighbors and friends. Each plant listing available for this Spring includes cooking suggestions and a link with growing tips.
+In that space, I'm so glad to offer another plant season to neighbors and friends. 
 
 **Ordering Plants**
 
@@ -30,11 +30,6 @@ In that space, I'm so glad to offer another plant season to neighbors and friend
 - If a plant becomes unavailable while you’re shopping, that will be clearly noted
 - An **email address is required**, so I can track and prepare each order accurately
 
-**What to Expect this Year**
 
-Each year, I get a little more experience for what works in this region, and I learn from mistakes. Last year I learned that cuttings are trickier than I thought. My apologies to those who had unsuccessful cuttings. I also got better insight for the differences between warm and cool season veggies and herbs. This year I'm honing my offerings to be a shorter but more popular list of vegetables, pollinator flowers, and cottage annuals.
-
-**IF early seeding goes well, below is what you can expect on the order form to be released at 11am on Saturday, March 28**.
-
-
+**The order form will be released at 11am on Saturday, March 28**.
 [Reservation Form live at 11a March 28!]()
