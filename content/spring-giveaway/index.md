@@ -37,4 +37,4 @@ Each year, I get a little more experience for what works in this region, and I l
 **IF early seeding goes well, below is what you can expect on the order form to be released at 11am on Saturday, March 28**.
 
 
-[Reservation Form](https://pinecorner.org/adopt/)
+[Reservation Form live at 11a March 28!]()
