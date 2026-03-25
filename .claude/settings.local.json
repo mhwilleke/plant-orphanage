@@ -10,7 +10,13 @@
       "WebFetch(domain:photos.app.goo.gl)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(npm run lint:styles:*)",
+      "Bash(npm run lint:scripts:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:pinecorner.org)",
+      "Bash(curl:*)",
+      "Bash(npx supabase:*)"
     ]
   }
 }
