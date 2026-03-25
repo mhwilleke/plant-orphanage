@@ -196,11 +196,19 @@ async function prepare_adoption_form() {
             link.textContent = orphan.plant_type;
             link.href = orphan.Plant_info;
 
-            // Season badge (uses season column)
+            // Season badges (supports multiple seasons separated by comma)
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
-                seasonBadge.textContent = orphan.season;
-                seasonBadge.classList.add(`season-${orphan.season.toLowerCase().replace(/\s+/g, '-')}`);
+                var seasons = orphan.season.split(/,\s*/);
+                seasonBadge.textContent = seasons[0].trim();
+                seasonBadge.classList.add(`season-${seasons[0].trim().toLowerCase().replace(/\s+/g, '-')}`);
+                // Add additional badges for multiple seasons
+                for (var s = 1; s < seasons.length; s++) {
+                    var extraBadge = document.createElement("span");
+                    extraBadge.className = `season-badge season-${seasons[s].trim().toLowerCase().replace(/\s+/g, '-')}`;
+                    extraBadge.textContent = seasons[s].trim();
+                    seasonBadge.after(extraBadge);
+                }
             } else {
                 seasonBadge.remove();
             }
