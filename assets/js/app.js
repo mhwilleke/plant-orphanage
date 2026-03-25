@@ -200,7 +200,7 @@ async function prepare_adoption_form() {
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
                 seasonBadge.textContent = orphan.season;
-                seasonBadge.classList.add(`season-${orphan.season.toLowerCase()}`);
+                seasonBadge.classList.add(`season-${orphan.season.toLowerCase().replace(/\s+/g, '-')}`);
             } else {
                 seasonBadge.remove();
             }

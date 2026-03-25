@@ -68,9 +68,19 @@
     color: #155724;
   }
 
+  &.season-early-summer {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  &.season-late-summer {
+    background-color: #ffc107;
+    color: #212529;
+  }
+
   &.season-fall {
-    background-color: #fff3cd;
-    color: #856404;
+    background-color: #fd7e14;
+    color: #fff;
   }
 }
 
