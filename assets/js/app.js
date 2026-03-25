@@ -147,7 +147,7 @@ async function fetchPlantInfo(season) {
     .select("Orphaned_ID,inventory_requested");
   let orphansQuery = supabase
     .from("OrphanedPlants")
-    .select("plant_type,inventory_available,Plant_info,id,plant_catagory,season")
+    .select("*")
     .order("plant_type");
 
   // Filter by season if provided
@@ -205,9 +205,13 @@ async function prepare_adoption_form() {
                 seasonBadge.remove();
             }
 
-            // Growing tips - disabled until column name resolved
+            // Growing tips
             var growingTips = clone.querySelector("#growing-tips");
-            growingTips.remove();
+            if (orphan["Growing Tips"]) {
+                growingTips.textContent = orphan["Growing Tips"];
+            } else {
+                growingTips.remove();
+            }
 
             var notes = clone.querySelector("#notes-placeholder");
             if (orphan.inventory_remaining === 0) {
