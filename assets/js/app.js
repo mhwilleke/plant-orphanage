@@ -147,7 +147,7 @@ async function fetchPlantInfo(season) {
     .select("Orphaned_ID,inventory_requested");
   let orphansQuery = supabase
     .from("OrphanedPlants")
-    .select("plant_type,inventory_available,Plant_info,id,plant_catagory,season,growing_tips")
+    .select("plant_type,inventory_available,Plant_info,id,plant_catagory,season")
     .order("plant_type");
 
   // Filter by season if provided
@@ -196,7 +196,7 @@ async function prepare_adoption_form() {
             link.textContent = orphan.plant_type;
             link.href = orphan.Plant_info;
 
-            // Season badge
+            // Season badge (uses season column)
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
                 seasonBadge.textContent = orphan.season;
@@ -205,13 +205,9 @@ async function prepare_adoption_form() {
                 seasonBadge.remove();
             }
 
-            // Growing tips
+            // Growing tips (column TBD - remove for now)
             var growingTips = clone.querySelector("#growing-tips");
-            if (orphan.growing_tips) {
-                growingTips.textContent = orphan.growing_tips;
-            } else {
-                growingTips.remove();
-            }
+            growingTips.remove();
 
             var notes = clone.querySelector("#notes-placeholder");
             if (orphan.inventory_remaining === 0) {
