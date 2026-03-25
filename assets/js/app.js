@@ -218,10 +218,27 @@ async function prepare_adoption_form() {
                 seasonBadge.remove();
             }
 
-            // Growing tips
+            // Growing tips - format with Needs on first line, Harvest on second
             var growingTips = clone.querySelector("#growing-tips");
             if (orphan["Growing Tips"]) {
-                growingTips.textContent = orphan["Growing Tips"];
+                var tips = orphan["Growing Tips"];
+                var needsMatch = tips.match(/Needs[:\s]*([^.]*\.?)/i);
+                var harvestMatch = tips.match(/Harvest[:\s]*([^.]*\.?)/i);
+
+                growingTips.innerHTML = '';
+                if (needsMatch) {
+                    var needsLine = document.createElement("div");
+                    needsLine.innerHTML = "<strong>Needs:</strong> " + needsMatch[1].trim();
+                    growingTips.appendChild(needsLine);
+                }
+                if (harvestMatch) {
+                    var harvestLine = document.createElement("div");
+                    harvestLine.innerHTML = "<strong>Harvest:</strong> " + harvestMatch[1].trim();
+                    growingTips.appendChild(harvestLine);
+                }
+                if (!needsMatch && !harvestMatch) {
+                    growingTips.textContent = tips;
+                }
             } else {
                 growingTips.remove();
             }
