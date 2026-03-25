@@ -199,15 +199,20 @@ async function prepare_adoption_form() {
             // Season badges (supports multiple seasons separated by comma)
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
-                var seasons = orphan.season.split(/,\s*/);
-                seasonBadge.textContent = seasons[0].trim();
-                seasonBadge.classList.add(`season-${seasons[0].trim().toLowerCase().replace(/\s+/g, '-')}`);
+                var seasonOrder = ['spring', 'early summer', 'late summer', 'fall'];
+                var seasons = orphan.season.split(/,\s*/).map(s => s.trim().toLowerCase());
+                seasons.sort((a, b) => seasonOrder.indexOf(a) - seasonOrder.indexOf(b));
+
+                seasonBadge.textContent = seasons[0];
+                seasonBadge.classList.add(`season-${seasons[0].replace(/\s+/g, '-')}`);
                 // Add additional badges for multiple seasons
+                var lastBadge = seasonBadge;
                 for (var s = 1; s < seasons.length; s++) {
                     var extraBadge = document.createElement("span");
-                    extraBadge.className = `season-badge season-${seasons[s].trim().toLowerCase().replace(/\s+/g, '-')}`;
-                    extraBadge.textContent = seasons[s].trim();
-                    seasonBadge.after(extraBadge);
+                    extraBadge.className = `season-badge season-${seasons[s].replace(/\s+/g, '-')}`;
+                    extraBadge.textContent = seasons[s];
+                    lastBadge.after(extraBadge);
+                    lastBadge = extraBadge;
                 }
             } else {
                 seasonBadge.remove();
