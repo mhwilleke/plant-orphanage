@@ -21,3 +21,87 @@
 .form-group {
   margin: 1em 0;
 }
+
+// Plant card styling for giveaway form
+.plant-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.plant-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.plant-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #0366d6;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.season-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &.season-spring {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  &.season-fall {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+}
+
+.growing-tips {
+  font-size: 0.9rem;
+  color: #495057;
+  font-style: italic;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.plant-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.inventory-info {
+  font-size: 0.85rem;
+  color: #6c757d;
+
+  &.sold-out {
+    color: #dc3545;
+    font-weight: 500;
+  }
+}
+
+.plant-card .number-wanted {
+  width: auto;
+  min-width: 70px;
+}

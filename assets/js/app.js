@@ -147,7 +147,7 @@ async function fetchPlantInfo(season) {
     .select("Orphaned_ID,inventory_requested");
   let orphansQuery = supabase
     .from("OrphanedPlants")
-    .select("plant_type,inventory_available,Plant_info, id,plant_catagory,season")
+    .select("plant_type,inventory_available,Plant_info,id,plant_catagory,season,growing_tips")
     .order("plant_type");
 
   // Filter by season if provided
@@ -195,19 +195,35 @@ async function prepare_adoption_form() {
             var link = clone.querySelector("#plant-name");
             link.textContent = orphan.plant_type;
             link.href = orphan.Plant_info;
-            var notes = clone.querySelector("#notes-placeholder")
-            if (orphan.inventory_remaining === 0) {
-                notes.remove();
+
+            // Season badge
+            var seasonBadge = clone.querySelector("#season-badge");
+            if (orphan.season) {
+                seasonBadge.textContent = orphan.season;
+                seasonBadge.classList.add(`season-${orphan.season.toLowerCase()}`);
+            } else {
+                seasonBadge.remove();
             }
-            notes.textContent = `Starting Inventory: ${orphan.inventory_available}`;
+
+            // Growing tips
+            var growingTips = clone.querySelector("#growing-tips");
+            if (orphan.growing_tips) {
+                growingTips.textContent = orphan.growing_tips;
+            } else {
+                growingTips.remove();
+            }
+
+            var notes = clone.querySelector("#notes-placeholder");
+            if (orphan.inventory_remaining === 0) {
+                notes.textContent = "All reserved!";
+                notes.classList.add("sold-out");
+            } else {
+                notes.textContent = `${orphan.inventory_remaining} of ${orphan.inventory_available} available`;
+            }
 
             var dropdown = clone.querySelector("#adopting-number");
 
             if (orphan.inventory_remaining === 0) {
-                var message = document.createElement("p");
-                message.textContent = "All out!";
-                message.style = "padding-left: 1em;";
-                dropdown.after(message);
                 dropdown.remove();
             } else {
                 for (var i = 1; i <= orphan.inventory_remaining; ++i) {
