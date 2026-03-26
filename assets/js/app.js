@@ -186,7 +186,18 @@ async function prepare_adoption_form() {
     console.log("Loading plants for season:", season);
     const {plant_categories} = await fetchPlantInfo(season);
     console.log(plant_categories);
+    var seasonOrder = ['spring', 'early summer', 'late summer', 'fall'];
+    function getEarliestSeasonIndex(plant) {
+        if (!plant.season) return 999;
+        var seasons = plant.season.split(/,\s*/).map(s => s.trim().toLowerCase());
+        var indices = seasons.map(s => seasonOrder.indexOf(s)).filter(i => i >= 0);
+        return indices.length > 0 ? Math.min(...indices) : 999;
+    }
+
     for(const [category_name,plants_in_category] of plant_categories) {
+        // Sort plants by season order within each category
+        plants_in_category.sort((a, b) => getEarliestSeasonIndex(a) - getEarliestSeasonIndex(b));
+
         var header = document.createElement("H2");
         header.textContent = category_name + "s";
         placeholder.appendChild(header);
@@ -199,7 +210,6 @@ async function prepare_adoption_form() {
             // Season badges (supports multiple seasons separated by comma)
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
-                var seasonOrder = ['spring', 'early summer', 'late summer', 'fall'];
                 var seasons = orphan.season.split(/,\s*/).map(s => s.trim().toLowerCase());
                 seasons.sort((a, b) => seasonOrder.indexOf(a) - seasonOrder.indexOf(b));
 
