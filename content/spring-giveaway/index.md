@@ -31,6 +31,7 @@ In that space, I'm so glad to offer another plant season to neighbors and friend
 - An **email address is required**, so I can track and prepare each order accurately.
 
 **Feed Your Garden Guide**
+
 This handout will be provided at the garden party, but it's always available here as well for an easy download.
 
 [Garden Feeding Guide](https://docs.google.com/document/d/1kQ272GCKTrZCamTemwHsSXoVPIVYphw8_KuPDQgBxSs/edit?tab=t.0#heading=h.cvvgs8sg48vh)
