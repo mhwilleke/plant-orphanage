@@ -30,6 +30,11 @@ In that space, I'm so glad to offer another plant season to neighbors and friend
 - If a plant becomes unavailable while you’re shopping, that will be clearly noted.
 - An **email address is required**, so I can track and prepare each order accurately.
 
+**Feed Your Garden Guide**
+This handout will be provided at the garden party, but it's always available here as well for an easy download.
+
+[Garden Feeding Guide](https://docs.google.com/document/d/1kQ272GCKTrZCamTemwHsSXoVPIVYphw8_KuPDQgBxSs/edit?tab=t.0#heading=h.cvvgs8sg48vh)
+
 
 **The order form will be released at 11am on Saturday, March 28**. 
 On this year's order form, you will see growing tips and expected harvest time based on when I seeded them. You can also click on the plant name and it will take you to plant details from where I received those seeds.
