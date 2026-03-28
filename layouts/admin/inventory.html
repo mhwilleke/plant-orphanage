@@ -1,4 +1,35 @@
 {{ define "main" }}
+<style>
+  @media print {
+    @page {
+      size: 8.5in 11in;
+      margin: 0.5in;
+    }
+    header, footer, nav, .navbar, .footer, #copy-btn, #print-btn {
+      display: none !important;
+    }
+    body {
+      font-size: 11pt;
+    }
+    .row, .col-lg-8 {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    h1 {
+      font-size: 18pt;
+      margin-bottom: 0.25in;
+    }
+    #report-table {
+      font-size: 10pt;
+    }
+    #report-table th, #report-table td {
+      padding: 4px 8px !important;
+    }
+  }
+</style>
+
 <div class="row justify-content-center">
   <div class="col-lg-8">
     <h1>{{ .Title }}</h1>
@@ -10,6 +41,7 @@
     <div id="report-content" style="display: none;">
       <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
         <strong>Total Plants: <span id="total-plants">0</span></strong>
+        <button id="print-btn" style="padding: 0.5rem 1rem; cursor: pointer;">Print</button>
         <button id="copy-btn" style="margin-left: auto; padding: 0.5rem 1rem; cursor: pointer;">Copy to Clipboard</button>
       </div>
 
@@ -93,6 +125,11 @@ async function loadReport() {
     document.getElementById('total-plants').textContent = totalPlants;
     document.getElementById('report-loading').style.display = 'none';
     document.getElementById('report-content').style.display = 'block';
+
+    // Print functionality
+    document.getElementById('print-btn').addEventListener('click', () => {
+      window.print();
+    });
 
     // Copy to clipboard functionality
     document.getElementById('copy-btn').addEventListener('click', () => {
