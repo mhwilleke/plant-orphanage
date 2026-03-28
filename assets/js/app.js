@@ -222,20 +222,6 @@ async function prepare_adoption_form() {
             link.textContent = orphan.plant_type;
             link.href = orphan.Plant_info;
 
-            // Set plant image or placeholder
-            var imageContainer = clone.querySelector(".plant-card-image");
-            var imageEl = clone.querySelector("#plant-image");
-            if (orphan.image) {
-                imageEl.src = orphan.image;
-                imageEl.alt = orphan.plant_type;
-            } else {
-                imageEl.remove();
-                var placeholder = document.createElement("span");
-                placeholder.className = "plant-image-placeholder";
-                placeholder.textContent = "🌱";
-                imageContainer.appendChild(placeholder);
-            }
-
             // Season badges (supports multiple seasons separated by comma)
             var seasonBadge = clone.querySelector("#season-badge");
             if (orphan.season) {
