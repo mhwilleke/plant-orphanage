@@ -10,6 +10,14 @@ season: "spring"
 images: []
 ---
 
+<a href="/adopt/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
+  <div style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
+    <p style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">🌿</p>
+    <h3 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.25rem;">Browse All Available Plants</h3>
+    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Reserve your plants now!</p>
+  </div>
+</a>
+
 <div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
   <h2 style="margin: 0 0 0.5rem 0; color: #2e7d32;">Garden Party</h2>
   <p style="font-size: 1.4rem; font-weight: 600; margin: 0; color: #33691e;">Saturday, May 2 &bull; 3pm - 5pm</p>
@@ -47,11 +55,3 @@ I'm so glad to offer another plant season to neighbors and friends. It brings me
   <h3 style="margin: 0 0 0.75rem 0;">Garden Feeding Guide</h3>
   <p style="margin: 0;">A printed handout will be provided at the garden party, or <a href="https://docs.google.com/document/d/1kQ272GCKTrZCamTemwHsSXoVPIVYphw8_KuPDQgBxSs/edit?tab=t.0#heading=h.cvvgs8sg48vh" target="_blank">download it here</a>.</p>
 </div>
-
-<a href="/adopt/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
-  <div style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
-    <p style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">🌿</p>
-    <h3 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.25rem;">Browse All Available Plants</h3>
-    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Reserve your plants now!</p>
-  </div>
-</a>
