@@ -187,6 +187,7 @@ async function prepare_adoption_form() {
     const {plant_categories} = await fetchPlantInfo(season);
     console.log(plant_categories);
     var seasonOrder = ['spring', 'early summer', 'late summer', 'fall'];
+    var categoryOrder = ['vegetable', 'herb', 'cottage annual', 'native perennial'];
     function getEarliestSeasonIndex(plant) {
         if (!plant.season) return 999;
         var seasons = plant.season.split(/,\s*/).map(s => s.trim().toLowerCase());
@@ -194,7 +195,16 @@ async function prepare_adoption_form() {
         return indices.length > 0 ? Math.min(...indices) : 999;
     }
 
-    for(const [category_name,plants_in_category] of plant_categories) {
+    // Sort categories in custom order
+    var sortedCategories = Array.from(plant_categories.entries()).sort((a, b) => {
+        var indexA = categoryOrder.indexOf(a[0].toLowerCase());
+        var indexB = categoryOrder.indexOf(b[0].toLowerCase());
+        if (indexA === -1) indexA = 999;
+        if (indexB === -1) indexB = 999;
+        return indexA - indexB;
+    });
+
+    for(const [category_name,plants_in_category] of sortedCategories) {
         // Sort plants by season order within each category
         plants_in_category.sort((a, b) => getEarliestSeasonIndex(a) - getEarliestSeasonIndex(b));
 
