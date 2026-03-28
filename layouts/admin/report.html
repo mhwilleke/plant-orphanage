@@ -92,12 +92,12 @@ async function loadReport() {
       quantity: a.inventory_requested
     }));
 
-    // Sort by category order, then name, then plant
+    // Sort by name, then category order, then plant
     reportData.sort((a, b) => {
-      const catCompare = getCategoryIndex(a.category) - getCategoryIndex(b.category);
-      if (catCompare !== 0) return catCompare;
       const nameCompare = a.name.localeCompare(b.name);
       if (nameCompare !== 0) return nameCompare;
+      const catCompare = getCategoryIndex(a.category) - getCategoryIndex(b.category);
+      if (catCompare !== 0) return catCompare;
       return a.plant.localeCompare(b.plant);
     });
 
