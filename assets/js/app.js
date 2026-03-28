@@ -202,14 +202,9 @@ async function prepare_adoption_form() {
         header.textContent = category_name + "s";
         placeholder.appendChild(header);
 
-        // Add limit note for specific categories
+        // Check if this category needs a limit note on each plant
         var categoryLower = category_name.toLowerCase();
-        if (categoryLower === "cottage annual" || categoryLower === "native perennial") {
-            var limitNote = document.createElement("p");
-            limitNote.innerHTML = "<em>limit 3 please</em>";
-            limitNote.style.cssText = "font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem; color: #666;";
-            placeholder.appendChild(limitNote);
-        }
+        var needsLimitNote = (categoryLower === "cottage annual" || categoryLower === "native perennial");
 
         for (const orphan of plants_in_category) {
             var clone = template.content.cloneNode(true);
@@ -278,6 +273,7 @@ async function prepare_adoption_form() {
             }
 
             var dropdown = clone.querySelector("#adopting-number");
+            var footer = clone.querySelector(".plant-card-footer");
 
             if (orphan.inventory_remaining === 0) {
                 dropdown.remove();
@@ -290,6 +286,14 @@ async function prepare_adoption_form() {
                 }
                 dropdown.dataset.plant = orphan.plant_type;
                 dropdown.dataset.plant_id = orphan.id;
+
+                // Add limit note for specific categories
+                if (needsLimitNote) {
+                    var limitNote = document.createElement("span");
+                    limitNote.textContent = "limit 3 please";
+                    limitNote.className = "limit-note";
+                    footer.appendChild(limitNote);
+                }
             }
 
             placeholder.appendChild(clone);

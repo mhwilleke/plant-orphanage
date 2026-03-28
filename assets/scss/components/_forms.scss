@@ -95,11 +95,16 @@
 
 .plant-card-footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
   margin-top: 0.75rem;
-  flex-wrap: wrap;
+}
+
+.limit-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #666;
 }
 
 .inventory-info {
