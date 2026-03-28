@@ -34,7 +34,7 @@
       padding: 2px 6px !important;
       line-height: 1.1 !important;
     }
-    #report-table td[colspan="2"] {
+    #report-table td[colspan="3"] {
       padding: 4px 6px !important;
     }
   }
@@ -60,6 +60,7 @@
           <tr style="background: #f5f5f5; text-align: left;">
             <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Plant</th>
             <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6; text-align: center;">Inventory</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6; text-align: center;">Remaining</th>
           </tr>
         </thead>
         <tbody id="report-body">
@@ -85,9 +86,28 @@ async function loadReport() {
     // Fetch plants
     const { data: plants, error: plantsError } = await supabase
       .from('OrphanedPlants')
-      .select('plant_type, plant_catagory, inventory_available');
+      .select('id, plant_type, plant_catagory, inventory_available');
 
     if (plantsError) throw plantsError;
+
+    // Fetch adoptions
+    const { data: adoptions, error: adoptionsError } = await supabase
+      .from('AdoptedPlants')
+      .select('Orphaned_ID, inventory_requested');
+
+    if (adoptionsError) throw adoptionsError;
+
+    // Calculate adopted totals by plant ID
+    const adoptedByPlant = {};
+    for (const adoption of adoptions) {
+      adoptedByPlant[adoption.Orphaned_ID] = (adoptedByPlant[adoption.Orphaned_ID] || 0) + adoption.inventory_requested;
+    }
+
+    // Add remaining to each plant
+    for (const plant of plants) {
+      const adopted = adoptedByPlant[plant.id] || 0;
+      plant.remaining = Math.max(0, plant.inventory_available - adopted);
+    }
 
     // Category sort order
     const categoryOrder = ['cottage annual', 'native perennial', 'herb', 'lettuce', 'vegetable'];
@@ -115,7 +135,7 @@ async function loadReport() {
         currentCategory = plant.plant_catagory;
         const headerRow = document.createElement('tr');
         headerRow.innerHTML = `
-          <td colspan="2" style="padding: 0.75rem; background: #e9ecef; font-weight: 600; text-transform: capitalize; border-top: 2px solid #adb5bd;">
+          <td colspan="3" style="padding: 0.75rem; background: #e9ecef; font-weight: 600; text-transform: capitalize; border-top: 2px solid #adb5bd;">
             ${currentCategory || 'Other'}s
           </td>
         `;
@@ -127,6 +147,7 @@ async function loadReport() {
       tr.innerHTML = `
         <td style="padding: 0.5rem 0.75rem; padding-left: 1.5rem;">${plant.plant_type}</td>
         <td style="padding: 0.5rem 0.75rem; text-align: center;">${plant.inventory_available}</td>
+        <td style="padding: 0.5rem 0.75rem; text-align: center;">${plant.remaining}</td>
       `;
       tbody.appendChild(tr);
       totalPlants += plant.inventory_available;
@@ -143,9 +164,9 @@ async function loadReport() {
 
     // Copy to clipboard functionality
     document.getElementById('copy-btn').addEventListener('click', () => {
-      let text = 'Plant\tInventory\n';
+      let text = 'Plant\tInventory\tRemaining\n';
       for (const plant of plants) {
-        text += `${plant.plant_type}\t${plant.inventory_available}\n`;
+        text += `${plant.plant_type}\t${plant.inventory_available}\t${plant.remaining}\n`;
       }
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copy-btn');
