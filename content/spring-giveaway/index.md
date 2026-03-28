@@ -52,8 +52,6 @@ I'm so glad to offer another plant season to neighbors and friends. It brings me
   <div style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
     <p style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">🌿</p>
     <h3 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.25rem;">Browse All Available Plants</h3>
-    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">View the complete plant collection across all seasons</p>
+    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Reserve your plants now!</p>
   </div>
 </a>
-
-**Order Form** &mdash; Click on any plant name to see seed source details. Growing tips and expected harvest times are included below.
