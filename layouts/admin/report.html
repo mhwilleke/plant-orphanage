@@ -127,7 +127,8 @@ async function loadReport() {
       totalPlants += row.quantity;
     }
 
-    document.getElementById('total-orders').textContent = reportData.length;
+    const uniqueNames = new Set(reportData.map(r => r.name));
+    document.getElementById('total-orders').textContent = uniqueNames.size;
     document.getElementById('total-plants').textContent = totalPlants;
     document.getElementById('report-loading').style.display = 'none';
     document.getElementById('report-content').style.display = 'block';
