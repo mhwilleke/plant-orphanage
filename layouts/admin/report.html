@@ -18,6 +18,7 @@
         <thead>
           <tr style="background: #f5f5f5; text-align: left;">
             <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Name</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Type</th>
             <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Plant</th>
             <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6; text-align: center;">Quantity</th>
           </tr>
@@ -57,21 +58,44 @@ async function loadReport() {
 
     if (adoptionsError) throw adoptionsError;
 
+    // Fetch plant categories
+    const { data: plants, error: plantsError } = await supabase
+      .from('OrphanedPlants')
+      .select('plant_type, plant_catagory');
+
+    if (plantsError) throw plantsError;
+
     // Create email to name lookup
     const nameByEmail = {};
     for (const adopter of adopters) {
       nameByEmail[adopter.email] = adopter.name || adopter.email;
     }
 
+    // Create plant to category lookup
+    const categoryByPlant = {};
+    for (const plant of plants) {
+      categoryByPlant[plant.plant_type] = plant.plant_catagory || 'Other';
+    }
+
+    // Category sort order
+    const categoryOrder = ['cottage annual', 'native perennial', 'herb', 'lettuce', 'vegetable'];
+    function getCategoryIndex(category) {
+      const idx = categoryOrder.indexOf(category.toLowerCase());
+      return idx >= 0 ? idx : 999;
+    }
+
     // Build report data
     const reportData = adoptions.map(a => ({
       name: nameByEmail[a.requester] || a.requester,
+      category: categoryByPlant[a.plant_type] || 'Other',
       plant: a.plant_type,
       quantity: a.inventory_requested
     }));
 
-    // Sort by name, then plant
+    // Sort by category order, then name, then plant
     reportData.sort((a, b) => {
+      const catCompare = getCategoryIndex(a.category) - getCategoryIndex(b.category);
+      if (catCompare !== 0) return catCompare;
       const nameCompare = a.name.localeCompare(b.name);
       if (nameCompare !== 0) return nameCompare;
       return a.plant.localeCompare(b.plant);
@@ -95,6 +119,7 @@ async function loadReport() {
 
       tr.innerHTML = `
         <td style="padding: 0.5rem 0.75rem; font-weight: ${showName ? '600' : 'normal'};">${showName ? row.name : ''}</td>
+        <td style="padding: 0.5rem 0.75rem; text-transform: capitalize;">${row.category}</td>
         <td style="padding: 0.5rem 0.75rem;">${row.plant}</td>
         <td style="padding: 0.5rem 0.75rem; text-align: center;">${row.quantity}</td>
       `;
@@ -109,9 +134,9 @@ async function loadReport() {
 
     // Copy to clipboard functionality
     document.getElementById('copy-btn').addEventListener('click', () => {
-      let text = 'Name\tPlant\tQuantity\n';
+      let text = 'Name\tType\tPlant\tQuantity\n';
       for (const row of reportData) {
-        text += `${row.name}\t${row.plant}\t${row.quantity}\n`;
+        text += `${row.name}\t${row.category}\t${row.plant}\t${row.quantity}\n`;
       }
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copy-btn');
