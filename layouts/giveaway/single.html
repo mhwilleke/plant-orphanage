@@ -28,16 +28,23 @@
 </div>
 <template id="orphaned-plant">
   <div class="plant-card">
-    <div class="plant-card-header">
-      <a id="plant-name" class="plant-title" target="_blank" href="#">Plant Name</a>
-      <span id="season-badge" class="season-badge"></span>
-    </div>
-    <p id="growing-tips" class="growing-tips"></p>
-    <div class="plant-card-footer">
-      <span id="notes-placeholder" class="inventory-info"></span>
-      <select class="form-select number-wanted" id="adopting-number">
-        <option selected value="0">0</option>
-      </select>
+    <div class="plant-card-layout">
+      <div class="plant-card-image">
+        <img id="plant-image" src="" alt="">
+      </div>
+      <div class="plant-card-content">
+        <div class="plant-card-header">
+          <a id="plant-name" class="plant-title" target="_blank" href="#">Plant Name</a>
+          <span id="season-badge" class="season-badge"></span>
+        </div>
+        <p id="growing-tips" class="growing-tips"></p>
+        <div class="plant-card-footer">
+          <span id="notes-placeholder" class="inventory-info"></span>
+          <select class="form-select number-wanted" id="adopting-number">
+            <option selected value="0">0</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 </template>
