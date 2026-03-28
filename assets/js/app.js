@@ -201,6 +201,16 @@ async function prepare_adoption_form() {
         var header = document.createElement("H2");
         header.textContent = category_name + "s";
         placeholder.appendChild(header);
+
+        // Add limit note for specific categories
+        var categoryLower = category_name.toLowerCase();
+        if (categoryLower === "cottage annual" || categoryLower === "native perennial") {
+            var limitNote = document.createElement("p");
+            limitNote.innerHTML = "<em>limit 3 please</em>";
+            limitNote.style.cssText = "font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem; color: #666;";
+            placeholder.appendChild(limitNote);
+        }
+
         for (const orphan of plants_in_category) {
             var clone = template.content.cloneNode(true);
             var link = clone.querySelector("#plant-name");
