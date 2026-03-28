@@ -1,0 +1,120 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <h1>{{ .Title }}</h1>
+
+    <div id="report-loading" style="text-align: center; padding: 2rem;">
+      Loading inventory data...
+    </div>
+
+    <div id="report-content" style="display: none;">
+      <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+        <strong>Total Plants: <span id="total-plants">0</span></strong>
+        <button id="copy-btn" style="margin-left: auto; padding: 0.5rem 1rem; cursor: pointer;">Copy to Clipboard</button>
+      </div>
+
+      <table id="report-table" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #f5f5f5; text-align: left;">
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Plant</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6; text-align: center;">Inventory</th>
+          </tr>
+        </thead>
+        <tbody id="report-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="report-error" style="display: none; color: #dc3545; padding: 1rem; background: #f8d7da; border-radius: 8px;">
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  "https://pcfigrjubeiztwprkcso.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
+);
+
+async function loadReport() {
+  try {
+    // Fetch plants
+    const { data: plants, error: plantsError } = await supabase
+      .from('OrphanedPlants')
+      .select('plant_type, plant_catagory, inventory_available');
+
+    if (plantsError) throw plantsError;
+
+    // Category sort order
+    const categoryOrder = ['cottage annual', 'native perennial', 'herb', 'lettuce', 'vegetable'];
+    function getCategoryIndex(category) {
+      if (!category) return 999;
+      const idx = categoryOrder.indexOf(category.toLowerCase());
+      return idx >= 0 ? idx : 999;
+    }
+
+    // Sort by category order, then plant name
+    plants.sort((a, b) => {
+      const catCompare = getCategoryIndex(a.plant_catagory) - getCategoryIndex(b.plant_catagory);
+      if (catCompare !== 0) return catCompare;
+      return a.plant_type.localeCompare(b.plant_type);
+    });
+
+    // Render table
+    const tbody = document.getElementById('report-body');
+    let totalPlants = 0;
+    let currentCategory = '';
+
+    for (const plant of plants) {
+      // Add category header row
+      if (plant.plant_catagory !== currentCategory) {
+        currentCategory = plant.plant_catagory;
+        const headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+          <td colspan="2" style="padding: 0.75rem; background: #e9ecef; font-weight: 600; text-transform: capitalize; border-top: 2px solid #adb5bd;">
+            ${currentCategory || 'Other'}s
+          </td>
+        `;
+        tbody.appendChild(headerRow);
+      }
+
+      const tr = document.createElement('tr');
+      tr.style.borderBottom = '1px solid #dee2e6';
+      tr.innerHTML = `
+        <td style="padding: 0.5rem 0.75rem; padding-left: 1.5rem;">${plant.plant_type}</td>
+        <td style="padding: 0.5rem 0.75rem; text-align: center;">${plant.inventory_available}</td>
+      `;
+      tbody.appendChild(tr);
+      totalPlants += plant.inventory_available;
+    }
+
+    document.getElementById('total-plants').textContent = totalPlants;
+    document.getElementById('report-loading').style.display = 'none';
+    document.getElementById('report-content').style.display = 'block';
+
+    // Copy to clipboard functionality
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      let text = 'Plant\tInventory\n';
+      for (const plant of plants) {
+        text += `${plant.plant_type}\t${plant.inventory_available}\n`;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
+      });
+    });
+
+  } catch (error) {
+    console.error('Error loading report:', error);
+    document.getElementById('report-loading').style.display = 'none';
+    document.getElementById('report-error').style.display = 'block';
+    document.getElementById('report-error').textContent = 'Error loading data: ' + error.message;
+  }
+}
+
+loadReport();
+</script>
+{{ end }}
