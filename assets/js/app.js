@@ -187,7 +187,7 @@ async function prepare_adoption_form() {
     const {plant_categories} = await fetchPlantInfo(season);
     console.log(plant_categories);
     var seasonOrder = ['spring', 'early summer', 'late summer', 'fall'];
-    var categoryOrder = ['vegetable', 'herb', 'cottage annual', 'native perennial'];
+    var categoryOrder = ['cottage annual', 'native perennial', 'herb', 'lettuce', 'vegetable'];
     function getEarliestSeasonIndex(plant) {
         if (!plant.season) return 999;
         var seasons = plant.season.split(/,\s*/).map(s => s.trim().toLowerCase());
