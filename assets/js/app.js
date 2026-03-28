@@ -297,13 +297,15 @@ async function prepare_adoption_form() {
                 dropdown.dataset.plant = orphan.plant_type;
                 dropdown.dataset.plant_id = orphan.id;
 
-                // Add limit note for specific categories
+                // Add limit note
+                var limitNote = document.createElement("span");
+                limitNote.className = "limit-note";
                 if (needsLimitNote) {
-                    var limitNote = document.createElement("span");
                     limitNote.textContent = "limit 3 please";
-                    limitNote.className = "limit-note";
-                    footer.appendChild(limitNote);
+                } else {
+                    limitNote.textContent = "no limit";
                 }
+                footer.appendChild(limitNote);
             }
 
             placeholder.appendChild(clone);
