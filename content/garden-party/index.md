@@ -27,7 +27,7 @@ images: []
 <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
   <div style="text-align: center;">
     <p style="font-size: 2.5rem; margin: 0;">📦</p>
-    <h3 style="margin: 0.5rem 0; color: #2e7d32; font-size: 1.4rem;">Your Plants Are Ready</h3>
+    <h3 style="margin: 0.5rem 0; color: #2e7d32; font-size: 1.4rem;">Reserved Plants Ready</h3>
     <p style="margin: 0; color: #666; font-size: 1.1rem;">Reserved plants will be pre-boxed and waiting for you!</p>
   </div>
 </div>
