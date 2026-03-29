@@ -53,3 +53,22 @@ images: []
 </div>
 
 </div>
+
+<div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; margin-top: 1rem;">
+  <h3 style="margin: 0 0 1rem 0; text-align: center; color: #333;">RSVP</h3>
+  <form id="rsvp-form" style="max-width: 400px; margin: 0 auto;">
+    <div style="margin-bottom: 1rem;">
+      <label for="name" style="display: block; margin-bottom: 0.25rem; color: #555;">Name</label>
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="email" style="display: block; margin-bottom: 0.25rem; color: #555;">Preferred Contact Email</label>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="party-size" style="display: block; margin-bottom: 0.25rem; color: #555;">Number of People</label>
+      <input type="number" id="party-size" name="party-size" min="1" max="10" value="1" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+    </div>
+    <button type="submit" style="width: 100%; padding: 0.75rem; background: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">Submit RSVP</button>
+  </form>
+</div>
