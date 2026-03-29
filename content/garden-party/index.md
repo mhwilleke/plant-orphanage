@@ -20,6 +20,7 @@ images: []
     <p style="font-size: 2.5rem; margin: 0;">🥂</p>
     <h3 style="margin: 0.5rem 0; color: #7b1fa2; font-size: 1.4rem;">Elderflower Rose Lemonade</h3>
     <p style="margin: 0; color: #666; font-size: 1.1rem;">Refreshing and floral &mdash; with or without champagne!</p>
+    <p style="margin: 0.5rem 0 0 0; color: #666; font-size: 1.1rem;">Cheese and crackers available &mdash; vegan included!</p>
   </div>
 </div>
 
