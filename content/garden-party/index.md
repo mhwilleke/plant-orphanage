@@ -69,6 +69,49 @@ images: []
       <label for="party-size" style="display: block; margin-bottom: 0.25rem; color: #555;">Number of People</label>
       <input type="number" id="party-size" name="party-size" min="1" max="10" value="1" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
     </div>
-    <button type="submit" style="width: 100%; padding: 0.75rem; background: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">Submit RSVP</button>
+    <button type="submit" id="submit-btn" style="width: 100%; padding: 0.75rem; background: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">Submit RSVP</button>
   </form>
+  <div id="rsvp-success" style="display: none; text-align: center; padding: 1rem; color: #2e7d32;">
+    Thanks for your RSVP! We look forward to seeing you.
+  </div>
+  <div id="rsvp-error" style="display: none; text-align: center; padding: 1rem; color: #dc3545;">
+  </div>
 </div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  "https://pcfigrjubeiztwprkcso.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
+);
+
+document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const partySize = parseInt(document.getElementById('party-size').value);
+
+  try {
+    const { error } = await supabase
+      .from('garden_party_rsvp')
+      .insert({ name, email, party_size: partySize });
+
+    if (error) throw error;
+
+    document.getElementById('rsvp-form').style.display = 'none';
+    document.getElementById('rsvp-success').style.display = 'block';
+  } catch (error) {
+    console.error('RSVP error:', error);
+    document.getElementById('rsvp-error').textContent = 'Error submitting RSVP. Please try again.';
+    document.getElementById('rsvp-error').style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Submit RSVP';
+  }
+});
+</script>
