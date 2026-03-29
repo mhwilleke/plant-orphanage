@@ -10,14 +10,6 @@ season: "spring"
 images: []
 ---
 
-<a href="/adopt/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
-  <div style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
-    <p style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">🌿</p>
-    <h3 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.25rem;">Plant Adoption Form</h3>
-    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Reserve your plants now!</p>
-  </div>
-</a>
-
 <a href="/garden-party/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
   <div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%); border-radius: 12px; padding: 1.5rem; text-align: center;">
     <h2 style="margin: 0 0 0.5rem 0; color: #2e7d32;">Garden Party</h2>
@@ -29,6 +21,14 @@ images: []
   <img src="greenhouse-wide.jpg" alt="Greenhouse filled with spring seedlings" style="max-width: 48%; min-width: 280px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
   <img src="HoopBed.jpg" alt="Hoop bed ready for transplants" style="max-width: 48%; min-width: 280px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 </div>
+
+<a href="/adopt/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
+  <div style="background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
+    <p style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">🌿</p>
+    <h3 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.25rem;">Plant Adoption Form</h3>
+    <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Reserve your plants now!</p>
+  </div>
+</a>
 
 I'm so glad to offer another plant season to neighbors and friends. It brings me joy to share this community experience each Spring and Fall with our wonderful neighborhood.
 
