@@ -19,8 +19,6 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
 
 ---
 
-## Drinks & Nibbles
-
 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
   <div style="text-align: center;">
     <p style="font-size: 2.5rem; margin: 0;">🍋</p>
@@ -31,8 +29,6 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
 
 ---
 
-## Plant Pickup
-
 <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
   <div style="text-align: center;">
     <p style="font-size: 2.5rem; margin: 0;">📦</p>
@@ -42,8 +38,6 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
 </div>
 
 ---
-
-## Freely Available
 
 <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">First come, first served &mdash; take what you like!</p>
 
