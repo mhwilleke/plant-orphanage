@@ -15,8 +15,6 @@ images: []
   <p style="margin: 0.5rem 0 0 0; color: #558b2f; font-style: italic;">At My Garden</p>
 </div>
 
-Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments, and connect with fellow gardeners in the neighborhood.
-
 ---
 
 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
@@ -62,7 +60,3 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
 </div>
 
 </div>
-
----
-
-We look forward to seeing you there!
