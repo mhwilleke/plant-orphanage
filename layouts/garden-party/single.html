@@ -85,34 +85,43 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
 );
 
-document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
+const form = document.getElementById('rsvp-form');
+const errorDiv = document.getElementById('rsvp-error');
 
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
+if (!form) {
+  alert('Form not found!');
+} else {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const partySize = parseInt(document.getElementById('party-size').value);
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    errorDiv.style.display = 'none';
 
-  try {
-    const { data, error } = await supabase
-      .from('garden_party_rsvp')
-      .insert({ name, email, party_size: partySize })
-      .select();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const partySize = parseInt(document.getElementById('party-size').value);
 
-    if (error) throw error;
+    try {
+      const { data, error } = await supabase
+        .from('garden_party_rsvp')
+        .insert({ name, email, party_size: partySize })
+        .select();
 
-    document.getElementById('rsvp-form').style.display = 'none';
-    document.getElementById('rsvp-success').style.display = 'block';
-  } catch (error) {
-    console.error('RSVP error:', error);
-    document.getElementById('rsvp-error').textContent = 'Error: ' + (error.message || 'Please try again.');
-    document.getElementById('rsvp-error').style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Submit RSVP';
-  }
-});
+      if (error) {
+        throw new Error(error.message + ' (code: ' + error.code + ')');
+      }
+
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
+    } catch (error) {
+      errorDiv.textContent = 'Error: ' + error.message;
+      errorDiv.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Submit RSVP';
+    }
+  });
+}
 </script>
 {{ end }}
