@@ -18,11 +18,12 @@ images: []
   </div>
 </a>
 
-<div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
-  <h2 style="margin: 0 0 0.5rem 0; color: #2e7d32;">Garden Party</h2>
-  <p style="font-size: 1.4rem; font-weight: 600; margin: 0; color: #33691e;">Saturday, May 2 &bull; 3pm - 5pm</p>
-  <p style="margin: 0.5rem 0 0 0; color: #558b2f;">At My Garden</p>
-</div>
+<a href="/garden-party/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
+  <div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%); border-radius: 12px; padding: 1.5rem; text-align: center;">
+    <h2 style="margin: 0 0 0.5rem 0; color: #2e7d32;">Garden Party</h2>
+    <p style="font-size: 1.4rem; font-weight: 600; margin: 0; color: #33691e;">Saturday, May 2 &bull; 3pm - 5pm</p>
+  </div>
+</a>
 
 <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
   <img src="greenhouse-wide.jpg" alt="Greenhouse filled with spring seedlings" style="max-width: 48%; min-width: 280px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
