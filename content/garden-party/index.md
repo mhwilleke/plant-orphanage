@@ -15,8 +15,6 @@ images: []
   <p style="margin: 0.5rem 0 0 0; color: #558b2f; font-style: italic;">At My Garden</p>
 </div>
 
----
-
 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
   <div style="text-align: center;">
     <p style="font-size: 2.5rem; margin: 0;">🥂</p>
@@ -25,8 +23,6 @@ images: []
   </div>
 </div>
 
----
-
 <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
   <div style="text-align: center;">
     <p style="font-size: 2.5rem; margin: 0;">📦</p>
@@ -34,8 +30,6 @@ images: []
     <p style="margin: 0; color: #666; font-size: 1.1rem;">Reserved plants will be pre-boxed and waiting for you!</p>
   </div>
 </div>
-
----
 
 <p style="text-align: center; color: #666; margin-bottom: 0.75rem;">First come, first served &mdash; take what you like!</p>
 
