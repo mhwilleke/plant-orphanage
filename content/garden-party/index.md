@@ -32,8 +32,6 @@ images: []
   </div>
 </div>
 
-<p style="text-align: center; color: #666; margin-bottom: 0.75rem;">First come, first served &mdash; take what you like!</p>
-
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 0.5rem 0;">
 
 <div style="background: #fff3e0; border-radius: 8px; padding: 1.25rem; text-align: center;">
