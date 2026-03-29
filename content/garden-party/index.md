@@ -39,6 +39,18 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
   <p style="margin: 0; color: #666;">Refreshing and floral &mdash; with or without champagne!</p>
 </div>
 
+<div style="background: #e8f5e9; border-radius: 8px; padding: 1.25rem; text-align: center;">
+  <p style="font-size: 2rem; margin: 0;">📦</p>
+  <h3 style="margin: 0.5rem 0; color: #2e7d32;">Plant Pickup</h3>
+  <p style="margin: 0; color: #666;">Your reserved plants will be pre-boxed and ready to go!</p>
+</div>
+
+<div style="background: #e3f2fd; border-radius: 8px; padding: 1.25rem; text-align: center;">
+  <p style="font-size: 2rem; margin: 0;">🔄</p>
+  <h3 style="margin: 0.5rem 0; color: #1565c0;">Plant Swap</h3>
+  <p style="margin: 0; color: #666;">Bring your splits or starts to share on the free swap table!</p>
+</div>
+
 </div>
 
 ---
