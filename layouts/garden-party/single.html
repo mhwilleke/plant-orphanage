@@ -14,6 +14,29 @@
         <p style="margin: 0.25rem 0 0 0; color: #558b2f; font-style: italic;">or use driveway for no stairs access</p>
       </div>
 
+      <div style="background: #f5f5f5; border-radius: 12px; padding: 1rem; margin-bottom: 1rem;">
+        <form id="rsvp-form" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: flex-end; justify-content: center;">
+          <div>
+            <label for="name" style="display: block; font-size: 0.85rem; margin-bottom: 0.15rem; color: #555;">Name</label>
+            <input type="text" id="name" name="name" required style="padding: 0.4rem; border: 1px solid #ccc; border-radius: 6px; width: 140px;">
+          </div>
+          <div>
+            <label for="email" style="display: block; font-size: 0.85rem; margin-bottom: 0.15rem; color: #555;">Email</label>
+            <input type="email" id="email" name="email" required style="padding: 0.4rem; border: 1px solid #ccc; border-radius: 6px; width: 180px;">
+          </div>
+          <div>
+            <label for="party-size" style="display: block; font-size: 0.85rem; margin-bottom: 0.15rem; color: #555;"># People</label>
+            <input type="number" id="party-size" name="party-size" min="1" max="10" value="1" required style="padding: 0.4rem; border: 1px solid #ccc; border-radius: 6px; width: 70px;">
+          </div>
+          <button type="submit" id="submit-btn" style="padding: 0.4rem 1rem; background: #2e7d32; color: white; border: none; border-radius: 6px; cursor: pointer;">RSVP</button>
+        </form>
+        <div id="rsvp-success" style="display: none; text-align: center; padding: 0.5rem; color: #2e7d32;">
+          Thanks for your RSVP! We look forward to seeing you.
+        </div>
+        <div id="rsvp-error" style="display: none; text-align: center; padding: 0.5rem; color: #dc3545;">
+        </div>
+      </div>
+
       <div style="background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
         <div style="text-align: center;">
           <p style="font-size: 2.5rem; margin: 0;">🥂</p>
@@ -48,30 +71,6 @@
           <p style="font-size: 2rem; margin: 0;">🔄</p>
           <h3 style="margin: 0.5rem 0; color: #1565c0;">Plant Swap</h3>
           <p style="margin: 0; color: #666;">Bring your splits or starts to share on the swap table</p>
-        </div>
-      </div>
-
-      <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; margin-top: 1rem;">
-        <h3 style="margin: 0 0 1rem 0; text-align: center; color: #333;">RSVP</h3>
-        <form id="rsvp-form" style="max-width: 400px; margin: 0 auto;">
-          <div style="margin-bottom: 1rem;">
-            <label for="name" style="display: block; margin-bottom: 0.25rem; color: #555;">Name</label>
-            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 1rem;">
-            <label for="email" style="display: block; margin-bottom: 0.25rem; color: #555;">Preferred Contact Email</label>
-            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
-          </div>
-          <div style="margin-bottom: 1rem;">
-            <label for="party-size" style="display: block; margin-bottom: 0.25rem; color: #555;">Number of People</label>
-            <input type="number" id="party-size" name="party-size" min="1" max="10" value="1" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
-          </div>
-          <button type="submit" id="submit-btn" style="width: 100%; padding: 0.75rem; background: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">Submit RSVP</button>
-        </form>
-        <div id="rsvp-success" style="display: none; text-align: center; padding: 1rem; color: #2e7d32;">
-          Thanks for your RSVP! We look forward to seeing you.
-        </div>
-        <div id="rsvp-error" style="display: none; text-align: center; padding: 1rem; color: #dc3545;">
         </div>
       </div>
 
