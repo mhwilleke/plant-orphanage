@@ -81,6 +81,8 @@ images: []
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
+console.log('RSVP script loaded');
+
 const supabase = createClient(
   "https://pcfigrjubeiztwprkcso.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
@@ -88,6 +90,7 @@ const supabase = createClient(
 
 document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
   e.preventDefault();
+  console.log('Form submitted');
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
@@ -97,10 +100,15 @@ document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
   const email = document.getElementById('email').value;
   const partySize = parseInt(document.getElementById('party-size').value);
 
+  console.log('Inserting:', { name, email, party_size: partySize });
+
   try {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('garden_party_rsvp')
-      .insert({ name, email, party_size: partySize });
+      .insert({ name, email, party_size: partySize })
+      .select();
+
+    console.log('Supabase response - data:', data, 'error:', error);
 
     if (error) throw error;
 
@@ -108,7 +116,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
     document.getElementById('rsvp-success').style.display = 'block';
   } catch (error) {
     console.error('RSVP error:', error);
-    document.getElementById('rsvp-error').textContent = 'Error submitting RSVP. Please try again.';
+    document.getElementById('rsvp-error').textContent = 'Error: ' + (error.message || 'Please try again.');
     document.getElementById('rsvp-error').style.display = 'block';
     btn.disabled = false;
     btn.textContent = 'Submit RSVP';
