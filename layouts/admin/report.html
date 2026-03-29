@@ -105,6 +105,21 @@ async function loadReport() {
     const tbody = document.getElementById('report-body');
     let totalPlants = 0;
     let currentName = '';
+    let personTotal = 0;
+
+    function addPersonTotalRow() {
+      if (currentName && personTotal > 0) {
+        const totalRow = document.createElement('tr');
+        totalRow.style.background = '#f8f9fa';
+        totalRow.innerHTML = `
+          <td style="padding: 0.5rem 0.75rem;"></td>
+          <td style="padding: 0.5rem 0.75rem;"></td>
+          <td style="padding: 0.5rem 0.75rem; text-align: right; font-weight: 600;">Total:</td>
+          <td style="padding: 0.5rem 0.75rem; text-align: center; font-weight: 600;">${personTotal}</td>
+        `;
+        tbody.appendChild(totalRow);
+      }
+    }
 
     for (const row of reportData) {
       const tr = document.createElement('tr');
@@ -113,7 +128,9 @@ async function loadReport() {
       // Show name only on first row for each person
       const showName = row.name !== currentName;
       if (showName) {
+        addPersonTotalRow();
         currentName = row.name;
+        personTotal = 0;
         tr.style.borderTop = '2px solid #adb5bd';
       }
 
@@ -125,7 +142,11 @@ async function loadReport() {
       `;
       tbody.appendChild(tr);
       totalPlants += row.quantity;
+      personTotal += row.quantity;
     }
+
+    // Add total row for the last person
+    addPersonTotalRow();
 
     const uniqueNames = new Set(reportData.map(r => r.name));
     document.getElementById('total-orders').textContent = uniqueNames.size;
