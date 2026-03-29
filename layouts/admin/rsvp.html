@@ -1,0 +1,108 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <h1>{{ .Title }}</h1>
+
+    <div id="report-loading" style="text-align: center; padding: 2rem;">
+      Loading RSVP data...
+    </div>
+
+    <div id="report-content" style="display: none;">
+      <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+        <strong>Total RSVPs: <span id="total-rsvps">0</span></strong>
+        <strong>Total Attendees: <span id="total-attendees">0</span></strong>
+        <button id="copy-btn" style="margin-left: auto; padding: 0.5rem 1rem; cursor: pointer;">Copy to Clipboard</button>
+      </div>
+
+      <table id="report-table" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #f5f5f5; text-align: left;">
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Name</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Email</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6; text-align: center;">Party Size</th>
+            <th style="padding: 0.75rem; border-bottom: 2px solid #dee2e6;">Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="report-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="report-error" style="display: none; color: #dc3545; padding: 1rem; background: #f8d7da; border-radius: 8px;">
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  "https://pcfigrjubeiztwprkcso.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
+);
+
+async function loadReport() {
+  try {
+    const { data: rsvps, error } = await supabase
+      .from('garden_party_rsvp')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    const tbody = document.getElementById('report-body');
+    let totalAttendees = 0;
+
+    for (const rsvp of rsvps) {
+      const tr = document.createElement('tr');
+      tr.style.borderBottom = '1px solid #dee2e6';
+
+      const date = new Date(rsvp.created_at);
+      const formatted = date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      });
+
+      tr.innerHTML = `
+        <td style="padding: 0.5rem 0.75rem;">${rsvp.name}</td>
+        <td style="padding: 0.5rem 0.75rem;">${rsvp.email}</td>
+        <td style="padding: 0.5rem 0.75rem; text-align: center;">${rsvp.party_size}</td>
+        <td style="padding: 0.5rem 0.75rem;">${formatted}</td>
+      `;
+      tbody.appendChild(tr);
+      totalAttendees += rsvp.party_size;
+    }
+
+    document.getElementById('total-rsvps').textContent = rsvps.length;
+    document.getElementById('total-attendees').textContent = totalAttendees;
+    document.getElementById('report-loading').style.display = 'none';
+    document.getElementById('report-content').style.display = 'block';
+
+    // Copy to clipboard functionality
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      let text = 'Name\tEmail\tParty Size\tSubmitted\n';
+      for (const rsvp of rsvps) {
+        const date = new Date(rsvp.created_at);
+        const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        text += `${rsvp.name}\t${rsvp.email}\t${rsvp.party_size}\t${formatted}\n`;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
+      });
+    });
+
+  } catch (error) {
+    console.error('Error loading RSVPs:', error);
+    document.getElementById('report-loading').style.display = 'none';
+    document.getElementById('report-error').style.display = 'block';
+    document.getElementById('report-error').textContent = 'Error loading data: ' + error.message;
+  }
+}
+
+loadReport();
+</script>
+{{ end }}
