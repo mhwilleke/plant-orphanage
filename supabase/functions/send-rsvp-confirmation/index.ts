@@ -20,19 +20,21 @@ Deno.serve(async (req) => {
       from: Deno.env.get("SMTP_FROM")!,
       to: record.email,
       subject: "Garden Party RSVP Confirmed!",
-      content: `Hi ${record.name},
+      html: `<p>Hi ${record.name},</p>
 
-Thanks for your RSVP! We're excited to see you at the Spring Garden Party.
+<p>Thanks for your RSVP! We're excited to see you at the Spring Garden Party.</p>
 
-Date: Saturday, May 2
-Time: 3pm - 5pm
-Location: 5 Farrwood Avenue
-  down the garden gate steps
-  no stairs access down the driveway
+<p>
+<strong>Date:</strong> Saturday, May 2<br>
+<strong>Time:</strong> 3pm - 5pm<br>
+<strong>Location:</strong> 5 Farrwood Avenue<br>
+<em>&nbsp;&nbsp;down the garden gate steps</em><br>
+<em>&nbsp;&nbsp;no stairs access down the driveway</em>
+</p>
 
-Party size: ${record.party_size}
+<p><strong>Party size:</strong> ${record.party_size}</p>
 
-See you there!`,
+<p>See you there!</p>`,
     });
 
     await client.close();
