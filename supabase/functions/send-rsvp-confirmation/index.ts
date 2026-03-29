@@ -29,10 +29,8 @@ Deno.serve(async (req) => {
 <strong>Time:</strong> 3pm - 5pm<br>
 <strong>Location:</strong> 5 Farrwood Avenue<br>
 <em>&nbsp;&nbsp;down the garden gate steps</em><br>
-<em>&nbsp;&nbsp;no stairs access down the driveway</em>
+<em>&nbsp;&nbsp;or use driveway for no stairs access</em>
 </p>
-
-<p><strong>Party size:</strong> ${record.party_size}</p>
 
 <p>See you there!</p>`,
     });
