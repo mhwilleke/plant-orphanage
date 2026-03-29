@@ -11,9 +11,10 @@ images: []
 ---
 
 <a href="/garden-party/" style="display: block; text-decoration: none; margin-bottom: 2rem;">
-  <div style="background: linear-gradient(135deg, #e8f5e9 0%, #fff8e1 100%); border-radius: 12px; padding: 1.5rem; text-align: center;">
-    <h2 style="margin: 0 0 0.5rem 0; color: #2e7d32;">Garden Party</h2>
-    <p style="font-size: 1.4rem; font-weight: 600; margin: 0; color: #33691e;">Saturday, May 2 &bull; 3pm - 5pm</p>
+  <div style="background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%); border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
+    <h2 style="margin: 0 0 0.5rem 0; color: #6a1b9a;">Garden Party</h2>
+    <p style="font-size: 1.4rem; font-weight: 600; margin: 0; color: #7b1fa2;">Saturday, May 2 &bull; 3pm - 5pm</p>
+    <p style="margin: 0.5rem 0 0 0; color: #8e24aa; font-weight: 500;">RSVP Now &rarr;</p>
   </div>
 </a>
 
