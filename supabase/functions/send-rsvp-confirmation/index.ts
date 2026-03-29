@@ -26,7 +26,9 @@ Thanks for your RSVP! We're excited to see you at the Spring Garden Party.
 
 Date: Saturday, May 2
 Time: 3pm - 5pm
-Location: My Garden
+Location: 5 Farrwood Avenue
+  down the garden gate steps
+  no stairs access down the driveway
 
 Party size: ${record.party_size}
 
