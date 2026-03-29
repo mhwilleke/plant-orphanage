@@ -19,36 +19,52 @@ Come celebrate spring with us! Pick up your reserved plants, enjoy refreshments,
 
 ---
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+## Drinks & Nibbles
+
+<div style="background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+  <div style="text-align: center;">
+    <p style="font-size: 2.5rem; margin: 0;">🍋</p>
+    <h3 style="margin: 0.5rem 0; color: #7b1fa2; font-size: 1.4rem;">Elderflower Rose Lemonade</h3>
+    <p style="margin: 0; color: #666; font-size: 1.1rem;">Refreshing and floral &mdash; with or without champagne!</p>
+  </div>
+</div>
+
+---
+
+## Plant Pickup
+
+<div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+  <div style="text-align: center;">
+    <p style="font-size: 2.5rem; margin: 0;">📦</p>
+    <h3 style="margin: 0.5rem 0; color: #2e7d32; font-size: 1.4rem;">Your Plants Are Ready</h3>
+    <p style="margin: 0; color: #666; font-size: 1.1rem;">Reserved plants will be pre-boxed and waiting for you!</p>
+  </div>
+</div>
+
+---
+
+## Freely Available
+
+<p style="text-align: center; color: #666; margin-bottom: 1.5rem;">First come, first served &mdash; take what you like!</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1rem 0;">
 
 <div style="background: #fff3e0; border-radius: 8px; padding: 1.25rem; text-align: center;">
   <p style="font-size: 2rem; margin: 0;">🥚</p>
   <h3 style="margin: 0.5rem 0; color: #e65100;">Fresh Eggs</h3>
-  <p style="margin: 0; color: #666;">Free 6-packs from our backyard chickens &mdash; first come, first served!</p>
+  <p style="margin: 0; color: #666;">Free 6-packs from our backyard chickens</p>
 </div>
 
 <div style="background: #fce4ec; border-radius: 8px; padding: 1.25rem; text-align: center;">
   <p style="font-size: 2rem; margin: 0;">🕯️</p>
   <h3 style="margin: 0.5rem 0; color: #c2185b;">Spring Candles</h3>
-  <p style="margin: 0; color: #666;">Handmade candles to bring a touch of spring into your home</p>
-</div>
-
-<div style="background: #f3e5f5; border-radius: 8px; padding: 1.25rem; text-align: center;">
-  <p style="font-size: 2rem; margin: 0;">🍋</p>
-  <h3 style="margin: 0.5rem 0; color: #7b1fa2;">Elderflower Rose Lemonade</h3>
-  <p style="margin: 0; color: #666;">Refreshing and floral &mdash; with or without champagne!</p>
-</div>
-
-<div style="background: #e8f5e9; border-radius: 8px; padding: 1.25rem; text-align: center;">
-  <p style="font-size: 2rem; margin: 0;">📦</p>
-  <h3 style="margin: 0.5rem 0; color: #2e7d32;">Plant Pickup</h3>
-  <p style="margin: 0; color: #666;">Your reserved plants will be pre-boxed and ready to go!</p>
+  <p style="margin: 0; color: #666;">Handmade candles to bring spring into your home</p>
 </div>
 
 <div style="background: #e3f2fd; border-radius: 8px; padding: 1.25rem; text-align: center;">
   <p style="font-size: 2rem; margin: 0;">🔄</p>
   <h3 style="margin: 0.5rem 0; color: #1565c0;">Plant Swap</h3>
-  <p style="margin: 0; color: #666;">Bring your splits or starts to share on the free swap table!</p>
+  <p style="margin: 0; color: #666;">Bring your splits or starts to share on the swap table</p>
 </div>
 
 </div>
