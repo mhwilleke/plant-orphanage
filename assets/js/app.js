@@ -125,7 +125,7 @@ function thankyou(receipt, adopter_email) {
     }
     const message = document.createElement("p");
     message.textContent =
-      "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt. If you want a record of this receipt, please take a picture with your phone or a screenshot.";
+      "Your request has been recorded! Please contact Marian (marianhhartman@gmail.com) if you see errors on your receipt. A copy of this receipt has been sent to your inbox.";
     adoption_form.parentElement.append(message);
     adoption_form.remove();
 
