@@ -63,6 +63,8 @@ Deno.serve(async (req) => {
 
 <p>Thank you so much for participating! It always feels wonderful to share the abundance, whether it's plants that give you garden to table organic food or give our pollinators what they need to keep our ecosystems strong!</p>
 
+<p>In the meantime, I hope that you can join us at the garden party on May 2 and pick up your plants at that time! You can RSVP here: <a href="https://pinecorner.org/garden-party/">https://pinecorner.org/garden-party/</a></p>
+
 <p>Here's what you reserved:</p>
 <ul>
 ${plantListHtml}
