@@ -58,10 +58,10 @@ Deno.serve(async (req) => {
     await client.send({
       from: Deno.env.get("SMTP_FROM")!,
       to: adopter.email,
-      subject: "Your Pine Corner Plant Adoption Receipt",
+      subject: "Your Plant Adoption Receipt",
       html: `<p>Hi ${adopter.name},</p>
 
-<p>Thank you for adopting plants from Pine Corner Greenhouse!</p>
+<p>It has been a wonderful weekend watching all the plant babies get adopted! Please find below your list of adoptions. In the meantime, I hope that you can join us at the garden party on May 2 and pick up your plants at that time! You can RSVP here: <a href="https://pinecorner.org/garden-party/">https://pinecorner.org/garden-party/</a></p>
 
 <p>Here's what you reserved:</p>
 <ul>
