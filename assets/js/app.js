@@ -74,10 +74,27 @@ async function sendToServer(data) {
         const number_remaining = plants.find(p=>p.plant_type === orphan.plant).inventory_remaining;
         receipt.push(await adoptPlant(orphan, data.adopter, number_remaining));
     }
-    thankyou(receipt);
+    thankyou(receipt, data.adopter.email);
 }
-function thankyou(receipt) {
+async function sendReceiptEmail(email) {
+    try {
+        const response = await fetch(
+            "https://pcfigrjubeiztwprkcso.supabase.co/functions/v1/send-adoption-receipt",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            }
+        );
+        console.log("Receipt email sent:", await response.json());
+    } catch (error) {
+        console.error("Failed to send receipt email:", error);
+    }
+}
+
+function thankyou(receipt, adopter_email) {
     console.log("adoption completed. Receipt:", receipt);
+    sendReceiptEmail(adopter_email);
     var adoption_form = document.querySelector("#adoption-form");
     const receipt_table = document.createElement("table");
     receipt_table.classList.add("receipt");
