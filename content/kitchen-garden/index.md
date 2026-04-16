@@ -21,7 +21,7 @@ images: []
 <tr><th>Crop</th><th>GH Start</th><th>Direct Seed</th><th>Bed Transplant</th><th>Harvest</th></tr>
 </thead>
 <tbody>
-<tr><td>Lettuce</td><td>Jan</td><td></td><td>March → fence pots</td><td>Year round</td></tr>
+<tr><td>Lettuce</td><td>Jan</td><td></td><td>March → fence pallets, hoop box 1, and salad box</td><td>Year round</td></tr>
 <tr><td>Celery</td><td>Jan</td><td></td><td>May</td><td></td></tr>
 <tr><td>Peppers</td><td>Jan</td><td></td><td>May → big pots</td><td>July–Oct</td></tr>
 <tr style="background:#cce5f5"><td>Eggplant</td><td>Feb</td><td></td><td>Late May → Sun 2</td><td></td></tr>
