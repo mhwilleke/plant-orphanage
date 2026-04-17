@@ -41,7 +41,7 @@ images: []
 <tr style="background:#dcedc8"><td>Cantaloupe</td><td>June</td><td></td><td>Late June</td><td>trellis by Hoop 1</td><td>Sept</td></tr>
 <tr style="background:#dcedc8"><td>Kale</td><td>July</td><td></td><td>Aug</td><td>Hoop 1</td><td>Oct–Feb</td></tr>
 <tr style="background:#e8d5a3"><td>Carrots</td><td></td><td>Aug</td><td></td><td></td><td>Oct–Nov</td></tr>
-<tr style="background:#e8d5a3"><td>Lettuce (fall)</td><td></td><td>Aug</td><td>Aug</td><td></td><td>Oct–Jan</td></tr>
+<tr style="background:#e8d5a3"><td>Lettuce (fall)</td><td></td><td>Aug</td><td></td><td></td><td>Oct–Jan</td></tr>
 <tr style="background:#e8d5a3"><td>Radishes (fall)</td><td></td><td>Aug</td><td></td><td></td><td>Oct–Jan</td></tr>
 <tr style="background:#e8d5a3"><td>Turnips</td><td></td><td>Aug</td><td></td><td></td><td>Sept–Nov</td></tr>
 <tr style="background:#ffd9a0"><td>Garlic</td><td></td><td>Nov</td><td></td><td></td><td>June</td></tr>
