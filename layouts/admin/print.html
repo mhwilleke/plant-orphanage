@@ -1,0 +1,306 @@
+{{ define "main" }}
+<style>
+  #print-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  #print-loading {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+  }
+
+  #print-error {
+    display: none;
+    color: #dc3545;
+    padding: 1rem;
+    background: #f8d7da;
+    border-radius: 8px;
+  }
+
+  .person-sheet {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .person-sheet:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .person-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #343a40;
+  }
+
+  .person-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .person-meta {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: right;
+  }
+
+  .person-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .person-table thead tr {
+    background: #f8f9fa;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: #495057;
+  }
+
+  .person-table th {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .person-table th:last-child,
+  .person-table td:last-child {
+    text-align: center;
+    width: 4rem;
+  }
+
+  .person-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+
+  .person-table .category-cell {
+    text-transform: capitalize;
+    color: #6c757d;
+    font-size: 0.875rem;
+    width: 8rem;
+  }
+
+  .person-table .total-row td {
+    border-top: 1px solid #343a40;
+    border-bottom: none;
+    padding-top: 0.6rem;
+    font-weight: 600;
+  }
+
+  .person-table .total-row .total-label {
+    text-align: right;
+    color: #495057;
+  }
+
+  .person-footer {
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed #dee2e6;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .pickup-field {
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+
+  .pickup-field span {
+    display: inline-block;
+    min-width: 8rem;
+    border-bottom: 1px solid #adb5bd;
+    margin-left: 0.25rem;
+  }
+
+  .site-brand {
+    font-size: 0.75rem;
+    color: #adb5bd;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+
+  @media print {
+    #print-controls {
+      display: none;
+    }
+
+    .person-sheet {
+      border: none;
+      border-radius: 0;
+      padding: 0.5in 0.5in;
+      margin: 0;
+    }
+
+    .person-table {
+      font-size: 11pt;
+    }
+
+    .person-name {
+      font-size: 16pt;
+    }
+  }
+</style>
+
+<div id="print-controls">
+  <h1 style="margin: 0; font-size: 1.25rem;">Pickup Sheets</h1>
+  <button id="print-btn" style="margin-left: auto; padding: 0.5rem 1.25rem; cursor: pointer;" onclick="window.print()">Print All</button>
+</div>
+
+<div id="print-loading">Loading adoption data&hellip;</div>
+<div id="print-error"></div>
+<div id="print-sheets"></div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  "https://pcfigrjubeiztwprkcso.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjZmlncmp1YmVpenR3cHJrY3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NzY0NjUsImV4cCI6MjA1NzU1MjQ2NX0.gJKbfjKUB8FdNG5S8YBqKZKjE5WR1FQcK5_VS0MC-Nw"
+);
+
+async function loadPrintSheets() {
+  try {
+    const [
+      { data: adopters, error: adoptersError },
+      { data: adoptions, error: adoptionsError },
+      { data: plants, error: plantsError }
+    ] = await Promise.all([
+      supabase.from('Adopters').select('email, name'),
+      supabase.from('AdoptedPlants').select('plant_type, inventory_requested, requester').order('requester'),
+      supabase.from('OrphanedPlants').select('plant_type, plant_catagory')
+    ]);
+
+    if (adoptersError) throw adoptersError;
+    if (adoptionsError) throw adoptionsError;
+    if (plantsError) throw plantsError;
+
+    const nameByEmail = {};
+    for (const a of adopters) {
+      nameByEmail[a.email] = a.name || a.email;
+    }
+
+    const categoryByPlant = {};
+    for (const p of plants) {
+      categoryByPlant[p.plant_type] = p.plant_catagory || 'other';
+    }
+
+    const categoryOrder = ['cottage annual', 'native perennial', 'herb', 'lettuce', 'vegetable'];
+    function categoryIndex(cat) {
+      const i = categoryOrder.indexOf((cat || '').toLowerCase());
+      return i >= 0 ? i : 999;
+    }
+
+    // Group by person
+    const byPerson = {};
+    for (const a of adoptions) {
+      const name = nameByEmail[a.requester] || a.requester;
+      if (!byPerson[name]) byPerson[name] = [];
+      byPerson[name].push({
+        category: categoryByPlant[a.plant_type] || 'other',
+        plant: a.plant_type,
+        quantity: a.inventory_requested
+      });
+    }
+
+    // Sort each person's plants
+    for (const rows of Object.values(byPerson)) {
+      rows.sort((a, b) => {
+        const ci = categoryIndex(a.category) - categoryIndex(b.category);
+        if (ci !== 0) return ci;
+        return a.plant.localeCompare(b.plant);
+      });
+    }
+
+    // Sort people alphabetically
+    const sortedNames = Object.keys(byPerson).sort((a, b) => a.localeCompare(b));
+
+    const container = document.getElementById('print-sheets');
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    for (const name of sortedNames) {
+      const rows = byPerson[name];
+      const total = rows.reduce((s, r) => s + r.quantity, 0);
+
+      const sheet = document.createElement('div');
+      sheet.className = 'person-sheet';
+
+      const rowsHtml = rows.map(r => `
+        <tr>
+          <td class="category-cell">${r.category}</td>
+          <td>${r.plant}</td>
+          <td>${r.quantity}</td>
+        </tr>
+      `).join('');
+
+      sheet.innerHTML = `
+        <div class="person-header">
+          <p class="person-name">${name}</p>
+          <div class="person-meta">Our Pine Corner<br>${today}</div>
+        </div>
+        <table class="person-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Plant</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+            <tr class="total-row">
+              <td></td>
+              <td class="total-label">Total plants</td>
+              <td>${total}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="person-footer">
+          <div class="pickup-field">Picked up by: <span>&nbsp;</span></div>
+          <div class="pickup-field">Date: <span>&nbsp;</span></div>
+        </div>
+        <div class="site-brand">pinecorner.org</div>
+      `;
+
+      container.appendChild(sheet);
+    }
+
+    document.getElementById('print-loading').style.display = 'none';
+
+    // Update controls summary
+    const summary = document.createElement('span');
+    summary.style.color = '#6c757d';
+    summary.style.fontSize = '0.9rem';
+    summary.textContent = `${sortedNames.length} adopters`;
+    document.getElementById('print-controls').insertBefore(summary, document.getElementById('print-btn'));
+
+  } catch (error) {
+    console.error('Error loading print sheets:', error);
+    document.getElementById('print-loading').style.display = 'none';
+    const el = document.getElementById('print-error');
+    el.style.display = 'block';
+    el.textContent = 'Error loading data: ' + error.message;
+  }
+}
+
+loadPrintSheets();
+</script>
+{{ end }}
