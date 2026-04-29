@@ -1,4 +1,6 @@
 {{ define "main" }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 <style>
   #print-controls {
     display: flex;
@@ -55,11 +57,23 @@
     border-radius: 4px;
   }
 
+  .sheet-image-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    color: #4a5568;
+    text-align: center;
+    line-height: 1.5;
+    transform: rotate(-4deg);
+    display: block;
+    margin-top: 0.5rem;
+  }
+
   .sheet-image-credit {
     font-size: 0.7rem;
     color: #6c757d;
     text-align: center;
     line-height: 1.3;
+    margin-top: 0.75rem;
   }
 
   .sheet-content-col {
@@ -290,6 +304,7 @@ async function loadPrintSheets() {
       sheet.innerHTML = `
         <div class="sheet-image-col">
           <img src="/images/greenhouse.png" alt="Watercolor illustration of a bunny in a greenhouse" />
+          <span class="sheet-image-message">Enjoy your plants!<br>With love, Marian</span>
           <div class="sheet-image-credit">Emily Duffin, Artist</div>
         </div>
         <div class="sheet-content-col">
