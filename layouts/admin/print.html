@@ -125,10 +125,25 @@
     font-weight: 600;
   }
 
+  .person-table th:nth-last-child(2),
+  .person-table td:nth-last-child(2) {
+    text-align: center;
+    width: 4rem;
+  }
+
   .person-table th:last-child,
   .person-table td:last-child {
     text-align: center;
-    width: 4rem;
+    width: 2.5rem;
+    padding-left: 0.25rem;
+    padding-right: 0.75rem;
+  }
+
+  .person-table input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    cursor: pointer;
+    accent-color: #343a40;
   }
 
   .person-table td {
@@ -154,26 +169,6 @@
   .person-table .total-row .total-label {
     text-align: right;
     color: #495057;
-  }
-
-  .person-footer {
-    margin-top: 1.25rem;
-    padding-top: 0.75rem;
-    border-top: 1px dashed #dee2e6;
-    display: flex;
-    gap: 2rem;
-  }
-
-  .pickup-field {
-    font-size: 0.8rem;
-    color: #6c757d;
-  }
-
-  .pickup-field span {
-    display: inline-block;
-    min-width: 8rem;
-    border-bottom: 1px solid #adb5bd;
-    margin-left: 0.25rem;
   }
 
   .site-brand {
@@ -298,6 +293,7 @@ async function loadPrintSheets() {
           <td class="category-cell">${r.category}</td>
           <td>${r.plant}</td>
           <td>${r.quantity}</td>
+          <td><input type="checkbox"></td>
         </tr>
       `).join('');
 
@@ -318,6 +314,7 @@ async function loadPrintSheets() {
                 <th>Type</th>
                 <th>Plant</th>
                 <th>Qty</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -326,13 +323,10 @@ async function loadPrintSheets() {
                 <td></td>
                 <td class="total-label">Total plants</td>
                 <td>${total}</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
-          <div class="person-footer">
-            <div class="pickup-field">Picked up by: <span>&nbsp;</span></div>
-            <div class="pickup-field">Date: <span>&nbsp;</span></div>
-          </div>
           <div class="site-brand">pinecorner.org</div>
         </div>
       `;
